@@ -5,7 +5,12 @@
 #include <stdatomic.h>
 #include "debugScreen.h"
 #include "port.h"
+#ifdef STARFRONT_AUTOSTART
 static int screen_enabled = 1;
+#else
+/* Keep PSV startup quiet; fatal_error initializes its own diagnostic screen. */
+static int screen_enabled = 0;
+#endif
 #if STARFRONT_FILE_LOG
 static SceUID log_mutex = -1;
 static SceUID log_fd = -1;
@@ -21,13 +26,13 @@ void port_screen(int enabled) { screen_enabled = enabled; }
 void port_init_log(void) {
     sceIoMkdir(DATA_DIR, 0777);
     sceIoMkdir(SAVE_DIR, 0777);
-    psvDebugScreenInit();
+    if (screen_enabled) psvDebugScreenInit();
 #if STARFRONT_FILE_LOG
     sceIoRemove(DATA_DIR "/port.previous.log");
     sceIoRename(DATA_DIR "/port.log", DATA_DIR "/port.previous.log");
     log_fd = sceIoOpen(DATA_DIR "/port.log", SCE_O_CREAT|SCE_O_WRONLY|SCE_O_TRUNC, 0666);
     log_mutex = sceKernelCreateMutex("port_log", 0, 0, NULL);
-    if (log_fd < 0) psvDebugScreenPrintf("Cannot write port.log: 0x%08x\n", log_fd);
+    if (log_fd < 0 && screen_enabled) psvDebugScreenPrintf("Cannot write port.log: 0x%08x\n", log_fd);
 #endif
 }
 static void emit(const char *message) {
@@ -45,7 +50,7 @@ static void emit(const char *message) {
 }
 void port_log(const char *fmt, ...) {
 #if !STARFRONT_FILE_LOG
-    /* After the startup screen, skip formatting as well as all file I/O. */
+    /* With no output enabled, skip formatting as well as all file I/O. */
     if (!screen_enabled) return;
 #endif
     char text[1024]; va_list ap; va_start(ap, fmt);

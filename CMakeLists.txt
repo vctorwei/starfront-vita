@@ -59,6 +59,10 @@ target_link_libraries(starfront
   SceNet_stub SceNetCtl_stub SceRtc_stub
   SceShaccCg_stub SceSysmodule_stub ScePower_stub SceTouch_stub SceVshBridge_stub)
 set(VITA_MKSFOEX_FLAGS "-d ATTRIBUTE2=12 -s CONTENT_ID=HB0001-SFHP00001_00-0000000000000000")
+# The softfp SDK's old mksfoex injects deprecated fields and VERSION=00.00.
+# Use the metadata schema of the released Gun Bros VPK without changing the SDK.
+find_package(Python3 REQUIRED COMPONENTS Interpreter)
+set(VITA_MKSFOEX "${Python3_EXECUTABLE};${CMAKE_CURRENT_SOURCE_DIR}/scripts/make_sfo.py")
 vita_create_self(eboot.bin starfront UNSAFE)
 set(STARFRONT_APP_NAME "Starfront Test")
 if(STARFRONT_AUTOSTART)
@@ -82,6 +86,8 @@ vita_create_vpk(Starfront-test.vpk SFHP00001 eboot.bin
   FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/sce_sys/icon0.png" sce_sys/icon0.png
   FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/sce_sys/pic0.png" sce_sys/pic0.png
   FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/sce_sys/livearea/contents/bg-r2.png" sce_sys/livearea/contents/bg-r2.png
-  FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/sce_sys/livearea/contents/startup-r2.png" sce_sys/livearea/contents/startup-r2.png
+  FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/sce_sys/livearea/contents/startup-r3.png" sce_sys/livearea/contents/startup-r3.png
   FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/sce_sys/livearea/contents/template.xml" sce_sys/livearea/contents/template.xml
 )
+add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/Starfront-test.vpk_param.sfo"
+  APPEND DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/scripts/make_sfo.py")

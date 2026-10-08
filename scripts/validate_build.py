@@ -329,6 +329,12 @@ class Validator:
         require(sfo.get("TITLE") == expected_title and sfo.get("STITLE") == expected_title,
                 f"SFO TITLE/STITLE disagree with AUTOSTART={token}")
         require(sfo.get("CONTENT_ID") == "HB0001-SFHP00001_00-0000000000000000", "missing or wrong CONTENT_ID")
+        obsolete = {"BOOT_FILE", "EBOOT_APP_MEMSIZE", "EBOOT_ATTRIBUTE", "EBOOT_PHY_MEMSIZE", "LAREA_TYPE", "NP_COMMUNICATION_ID"}
+        require(not obsolete.intersection(sfo), "obsolete SDK default fields reintroduced")
+        require(sfo.get("VERSION") == "01.00", "invalid package VERSION")
+        require(sfo.get("SAVEDATA_MAX_SIZE") == 1048576 and sfo.get("REGION_DENY") == 0
+                and sfo.get("GC_RO_SIZE") == 0 and sfo.get("GC_RW_SIZE") == 0,
+                "game metadata differs from the Gun Bros/current VitaSDK schema")
         return {"CONTENT_ID": sfo["CONTENT_ID"], "autostart": autostart, "TITLE_ID": sfo["TITLE_ID"], "APP_VER": sfo["APP_VER"],
                 "TITLE": sfo["TITLE"], "STITLE": sfo["STITLE"]}
 

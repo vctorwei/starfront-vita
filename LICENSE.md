@@ -22,7 +22,8 @@ licensed under MIT or GPL by this repository. The maintainer's gameplay recordin
 and externally linked promotional screenshot illustrate the game; neither is a
 redistribution license for the depicted game or its artwork.
 
-The four Vita system PNGs are Gameloft game artwork, excluded from the software
-licenses above; see [artwork notice](assets/ARTWORK.md).
+Vita system artwork includes three Gameloft-derived images and a separately
+AI-generated launch card. Artwork is excluded from the software licenses above;
+see [artwork notice](assets/ARTWORK.md).
 
 See [THIRD_PARTY.md](THIRD_PARTY.md) for source provenance and component terms.

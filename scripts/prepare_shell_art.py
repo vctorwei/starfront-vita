@@ -23,7 +23,6 @@ def main():
             ('res/drawable/icon.png', 'icon0.png', (128, 128)),
             ('res/drawable/gi_background.png', 'pic0.png', (960, 544)),
             ('res/drawable/gi_background.png', 'livearea/contents/bg-r2.png', (840, 500)),
-            ('res/drawable/gi_background.png', 'livearea/contents/startup-r2.png', (280, 158)),
         ]:
             source = archive.read(member)
             image = Image.open(io.BytesIO(source))
@@ -56,7 +55,7 @@ def main():
               'images': records}
     (ROOT / 'reports').mkdir(exist_ok=True)
     (ROOT / 'reports/livearea-assets.json').write_text(json.dumps(report, indent=2) + '\n')
-    print('Prepared 4 Vita shell images from supplied game artwork.')
+    print('Prepared 3 Vita shell images from supplied game artwork. Run prepare_launch_card.cjs for the generated launch card.')
 
 
 if __name__ == '__main__':

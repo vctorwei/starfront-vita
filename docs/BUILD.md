@@ -1,6 +1,6 @@
-# Building and relinking 00.06-r2
+# Building and relinking 00.06-r3
 
-Use a **softfp VitaSDK** with CMake 3.18+ and a Make or Ninja build tool.
+Use a **softfp VitaSDK** with CMake 3.18+, Python 3.9+ and a Make or Ninja build tool.
 The release was built on macOS with the VitaSDK `softfp-osx-v2.228` toolchain
 (GCC 10.3.0). Toolchain sources and setup: [VitaSDK buildscripts](https://github.com/vitasdk/buildscripts),
 [softfp package recipes](https://github.com/Rinnegatamante/vitasdk-packages-softfp).
@@ -50,19 +50,40 @@ The checks cover host JNI behavior, local data preparation and static build
 properties. They do not establish Vita hardware compatibility or complete
 campaign playability.
 
-The shell PNGs use Starfront's Android APK artwork, with original copyright
-retained in `assets/ARTWORK.md`. They are not MIT or GPL artwork. Regeneration
-from your own APK requires Pillow:
+The icon, background and launch splash use Starfront's Android APK artwork.
+The New Mission card is separately AI-generated. Provenance is recorded in
+`assets/ARTWORK.md`; artwork is outside the software licenses. Regeneration
+of the three game-derived PNGs from your own APK requires Pillow:
 
 ```sh
 python3 -m pip install Pillow
 python3 scripts/prepare_shell_art.py --apk Starfront.apk
 ```
 
-00.06-r2 changes only the VPK shell assets, LiveArea template, CONTENT_ID and
-notices relative to 00.06-r1. Its packaged `eboot.bin` is byte-identical to r1.
+The generated launch-card master is included in `assets/source/new-mission.png`.
+To resize and encode it as a transparent, indexed PNG, use Node.js with sharp:
+
+```sh
+npm install --no-save --package-lock=false sharp
+node scripts/prepare_launch_card.cjs
+```
+
+00.06-r3 updates packaging and shell presentation. Its only runtime source
+change relative to r1/r2 is `src/log.c`: normal PSV startup leaves the debug
+screen disabled, while fatal errors initialize the screen and display the
+cause. Emulator startup diagnostics are retained. The vitaGL initialization
+and gameplay sources are unchanged. A host test covers quiet startup and
+visible fatal errors for both build modes; the new binary is not byte-identical
+to r1/r2 and has not been retested in-game.
 The Gun Bros-inspired template uses `ad0`, a background image and a clickable
 `frame` targeting `psla:eboot`; no runtime LiveArea refresh function is called.
+
+`scripts/make_sfo.py` generates the SFO using the current VitaSDK game schema,
+avoiding deprecated defaults from the older softfp SDK's mksfoex. With Gun Bros
+v1.0's metadata inputs it reproduces that release's SFO byte for byte. See
+[VitaSDK issue 282](https://github.com/vitasdk/vita-toolchain/issues/282).
+The maintainer confirmed the system page working with the r3 metadata test VPK;
+the new generated card has only received static format and readability checks.
 
 The website promotional screenshot is only externally linked; it is not part of
 the loader, its shell artwork, or the build inputs.

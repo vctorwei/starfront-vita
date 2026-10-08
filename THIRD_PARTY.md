@@ -61,10 +61,14 @@ prebuilt SDK runtime archives.
 
 ## Artwork and game files
 
-- The four shell PNGs are resized Starfront artwork from the supplied Android
+- Three shell PNGs are resized Starfront artwork from the supplied Android
   1.0.0 APK, © Gameloft. They are excluded from the project's MIT/GPL licenses;
   see `assets/ARTWORK.md`. The LiveArea template follows Gun Bros's `ad0` +
   clickable frame arrangement, with an explicit application CONTENT_ID.
+- The launch card is AI-generated for this project, with Gun Bros's card as a
+  layout reference and Starfront's artwork as a style reference. Its source
+  master and prompt are included under `assets/source/`; it is not original game
+  artwork. See `assets/ARTWORK.md` for provenance and scope.
 - The README embeds an externally hosted Starfront promotional screenshot from
   [Gameloft's public post](https://x.com/gameloft/status/964888517984837637).
   Copyright remains with Gameloft. No permission to redistribute or relicense
