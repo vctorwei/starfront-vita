@@ -13,7 +13,7 @@ remain intact; they do not grant rights to the original game or system software.
 | [Modern Combat 2: Black Pegasus Vita](https://github.com/WolffsRoom/MC2BPegasus-Vita) | WolffsRoom and upstream contributors | [`253676d4`](https://github.com/WolffsRoom/MC2BPegasus-Vita/commit/253676d4e0a3c33cfab133a06c3c1e6ad552a26f) | Gameloft JNI initialization and graphics compatibility |
 | [GTA: San Andreas Vita](https://github.com/TheOfficialFloW/gtasa_vita) | Andy Nguyen / TheFloW and contributors | [`96941714`](https://github.com/TheOfficialFloW/gtasa_vita/commit/96941714673c56b689d51ce6f79df68bbd0bebd5) | ELF-loader foundation, ABI and relocation reference |
 
-Additional reference: [Gun Bros PSVita](https://github.com/Rocroverss/Gun-Bros-Psvita) by Rocroverss and contributors, revision `dab9e6a22b77c352bb74baf12787501c53d4e1c7`, reviewed for Vita system LiveArea templates and VPK packaging. No Gun Bros assets or code are included.
+Additional reference: [Gun Bros PSVita](https://github.com/Rocroverss/Gun-Bros-Psvita) by Rocroverss and contributors, revision `dab9e6a22b77c352bb74baf12787501c53d4e1c7`, reviewed for Vita system LiveArea templates and VPK packaging. No Gun Bros game assets or runtime code are included; the LiveArea XML arrangement is adapted with its MIT notice preserved in `licenses/Gun-Bros-MIT.txt`.
 
 Their MIT notices are reproduced in `licenses/`. Reference acknowledgement does not imply that each project's code, configuration tools or artwork is bundled with Starfront.
 
@@ -61,14 +61,18 @@ prebuilt SDK runtime archives.
 
 ## Artwork and game files
 
-- The shell PNGs/SVGs are original geometric SF artwork, under the project's MIT license.
+- The four shell PNGs are resized Starfront artwork from the supplied Android
+  1.0.0 APK, © Gameloft. They are excluded from the project's MIT/GPL licenses;
+  see `assets/ARTWORK.md`. The LiveArea template follows Gun Bros's `ad0` +
+  clickable frame arrangement, with an explicit application CONTENT_ID.
 - The README embeds an externally hosted Starfront promotional screenshot from
   [Gameloft's public post](https://x.com/gameloft/status/964888517984837637).
   Copyright remains with Gameloft. No permission to redistribute or relicense
   that screenshot is claimed. It is not a build input or a file in the VPK.
 - The MP4/GIF is a maintainer-supplied recording of the earlier 00.06 build on a
   physical Vita. Depicted game content retains its owner's rights.
-- APK/OBB, `libstarfront.so`, `igli.bin`, `serialkey.txt`, game archives, saves and
+- Apart from the credited system artwork, APK/OBB, `libstarfront.so`,
+  `igli.bin`, `serialkey.txt`, game archives, saves and
   derived game shaders are not distributed. `scripts/prepare_game.py` extracts
   resources and adapts two shaders locally from the user's verified 1.0.0 files.
   File names, sizes and hashes are used to identify the supported version.

@@ -14,6 +14,7 @@ import struct
 import sys
 import zipfile
 import zlib
+import xml.etree.ElementTree as ET
 from collections import Counter
 from pathlib import Path
 
@@ -327,11 +328,12 @@ class Validator:
         require(sfo.get("APP_VER") == "00.06", "wrong SFO APP_VER (expected 00.06)")
         require(sfo.get("TITLE") == expected_title and sfo.get("STITLE") == expected_title,
                 f"SFO TITLE/STITLE disagree with AUTOSTART={token}")
-        return {"autostart": autostart, "TITLE_ID": sfo["TITLE_ID"], "APP_VER": sfo["APP_VER"],
+        require(sfo.get("CONTENT_ID") == "HB0001-SFHP00001_00-0000000000000000", "missing or wrong CONTENT_ID")
+        return {"CONTENT_ID": sfo["CONTENT_ID"], "autostart": autostart, "TITLE_ID": sfo["TITLE_ID"], "APP_VER": sfo["APP_VER"],
                 "TITLE": sfo["TITLE"], "STITLE": sfo["STITLE"]}
 
     def distribution(self):
-        allowed = {"eboot.bin", "sce_sys/param.sfo", "COPYING", "LICENSE.md", "THIRD_PARTY.md", "DISTRIBUTION.txt", "docs/BUILD.md"}
+        allowed = {"eboot.bin", "sce_sys/param.sfo", "COPYING", "LICENSE.md", "THIRD_PARTY.md", "DISTRIBUTION.txt", "docs/BUILD.md", "assets/ARTWORK.md"}
         expected = {}
         for path in (ROOT / "assets/sce_sys").rglob("*"):
             if path.is_file() and path.suffix in {".png", ".xml"}:
@@ -352,7 +354,13 @@ class Validator:
         cache = (self.build_dir / "CMakeCache.txt").read_text()
         require("STARFRONT_FILE_LOG:BOOL=OFF" in cache, "PSV file logging enabled")
         require("STARFRONT_NATIVE_HEIGHT:STRING=600" in cache, "release layout changed")
-        return {"packaged_game_resources": False, "source_assets_match": True, "logical_height": 600, "file_logging": False}
+        template = ET.fromstring(self.package()["sce_sys/livearea/contents/template.xml"])
+        require(template.get("style") == "ad0", "unexpected LiveArea style")
+        require(template.findtext("frame/liveitem/target") == "psla:eboot", "missing LiveArea launch target")
+        for item in template.iter("image"):
+            name = "sce_sys/livearea/contents/" + (item.text or "").strip()
+            require(name in self.package(), "LiveArea image absent: " + name)
+        return {"packaged_game_artwork": True, "packaged_game_executable_or_data_archives": False, "source_assets_match": True, "logical_height": 600, "file_logging": False}
 
     def imports(self):
         cache = (self.build_dir / "CMakeCache.txt").read_text()

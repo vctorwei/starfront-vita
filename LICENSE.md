@@ -1,6 +1,6 @@
 # License scope
 
-Original loader code, scripts, documentation and geometric shell artwork by
+Original loader code, scripts and documentation by
 vctorwei are available under the [MIT License](licenses/Project-MIT.txt), except
 files or portions with an existing third-party notice. The Android/Harmony
 compatibility portion of `src/drm_preferences.c` is Apache-2.0.
@@ -21,5 +21,8 @@ not licensed or supplied by this project. No Gameloft code, data or artwork is
 licensed under MIT or GPL by this repository. The maintainer's gameplay recording
 and externally linked promotional screenshot illustrate the game; neither is a
 redistribution license for the depicted game or its artwork.
+
+The four Vita system PNGs are Gameloft game artwork, excluded from the software
+licenses above; see [artwork notice](assets/ARTWORK.md).
 
 See [THIRD_PARTY.md](THIRD_PARTY.md) for source provenance and component terms.

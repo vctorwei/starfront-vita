@@ -58,7 +58,7 @@ target_link_libraries(starfront
   SceCommonDialog_stub SceDisplay_stub SceKernelDmacMgr_stub SceGxm_stub
   SceNet_stub SceNetCtl_stub SceRtc_stub
   SceShaccCg_stub SceSysmodule_stub ScePower_stub SceTouch_stub SceVshBridge_stub)
-set(VITA_MKSFOEX_FLAGS "-d ATTRIBUTE2=12")
+set(VITA_MKSFOEX_FLAGS "-d ATTRIBUTE2=12 -s CONTENT_ID=HB0001-SFHP00001_00-0000000000000000")
 vita_create_self(eboot.bin starfront UNSAFE)
 set(STARFRONT_APP_NAME "Starfront Test")
 if(STARFRONT_AUTOSTART)
@@ -78,9 +78,10 @@ vita_create_vpk(Starfront-test.vpk SFHP00001 eboot.bin
   FILE "${CMAKE_CURRENT_SOURCE_DIR}/THIRD_PARTY.md" THIRD_PARTY.md
   FILE "${CMAKE_CURRENT_SOURCE_DIR}/DISTRIBUTION.txt" DISTRIBUTION.txt
   FILE "${CMAKE_CURRENT_SOURCE_DIR}/docs/BUILD.md" docs/BUILD.md
+  FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/ARTWORK.md" assets/ARTWORK.md
   FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/sce_sys/icon0.png" sce_sys/icon0.png
   FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/sce_sys/pic0.png" sce_sys/pic0.png
-  FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/sce_sys/livearea/contents/cover-bg06.png" sce_sys/livearea/contents/cover-bg06.png
-  FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/sce_sys/livearea/contents/cover-gate06.png" sce_sys/livearea/contents/cover-gate06.png
+  FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/sce_sys/livearea/contents/bg-r2.png" sce_sys/livearea/contents/bg-r2.png
+  FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/sce_sys/livearea/contents/startup-r2.png" sce_sys/livearea/contents/startup-r2.png
   FILE "${CMAKE_CURRENT_SOURCE_DIR}/assets/sce_sys/livearea/contents/template.xml" sce_sys/livearea/contents/template.xml
 )

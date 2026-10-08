@@ -2,7 +2,7 @@
 
 # Starfront: Collision HD · PS Vita Loader
 
-[**Download VPK**](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6-r1) · [Installation](#installation) · [Demo](#hardware-demo) · [Credits](#credits) · [简体中文](README.zh-CN.md)
+[**Download VPK**](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6-r2) · [Installation](#installation) · [Demo](#hardware-demo) · [Credits](#credits) · [简体中文](README.zh-CN.md)
 
 [![Starfront promotional screenshot published by Gameloft](https://pbs.twimg.com/media/DWP4997W4AEr0pW.jpg)](https://x.com/gameloft/status/964888517984837637)
 
@@ -10,13 +10,13 @@
 
 This repository contains a loader for the **Android 1.0.0 release of Starfront: Collision HD**, based on TheFloW's Android SO loader. It supplies the Android compatibility functions needed to run the original ARMv7 executable on PS Vita. You need your own **1.0.0 APK and matching OBB/data**.
 
-**00.06-r1 is a development preview based on 00.06.** It separates user-supplied resources from the VPK and publishes the loader's source. The revised build has not yet been tested on real hardware. Full campaign stability remains unverified.
+**00.06-r2 is a development preview based on 00.06.** It restores the game-art bubble and LiveArea, using a Gun Bros-style system template. The revised build has not yet been tested on real hardware. Full campaign stability remains unverified.
 
 ## Disclaimer
 
 Starfront: Collision HD © 2011 Gameloft. The game and all associated names, artwork and trademarks belong to their respective owners. This is an unofficial project, not produced, authorized or endorsed by Gameloft or Sony.
 
-The loader distribution contains no original game executable, APK, OBB or extracted game resources. Players must supply their own legally obtained copy. The authors do not support or encourage piracy. Screenshots and the gameplay demonstration remain subject to the game owner's rights.
+The loader includes game artwork for the Vita system UI, credited to Gameloft. It does not include the original game executable, APK, OBB or playable game data. Players must supply their own legally obtained copy. The authors do not support or encourage piracy. System artwork, screenshots and the gameplay demonstration retain the game owner's rights and are not covered by the software license.
 
 ## Installation
 
@@ -36,9 +36,11 @@ The loader distribution contains no original game executable, APK, OBB or extrac
 
    On Windows, use `py -3` instead of `python3`. `--data` accepts the unpacked `GloftSFHP` folder or a ZIP-compatible OBB/data archive. The script checks the APK and prepares everything locally; it downloads no game files.
 4. Copy the resulting `starfront` folder to `ux0:data/starfront/`. **Keep existing saves when updating.** Merge the prepared files without replacing your existing `data.save` files.
-5. Install the [VPK](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6-r1) with [VitaShell](https://github.com/TheOfficialFloW/VitaShell), open **Starfront Test**. The game starts automatically after the startup checks pass.
+5. Install the [VPK](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6-r2) with [VitaShell](https://github.com/TheOfficialFloW/VitaShell), open **Starfront Test**. The game starts automatically after the startup checks pass.
 
 **Updating from 00.06:** run preparation once to obtain the newly required `apk/igli.bin` and `apk/serialkey.txt`, copy them alongside the existing data, then install the new VPK. Resolution remains 1024×600 scaled to 960×544; file logging is disabled.
+
+**Updating from 00.06-r1:** overwrite-install the VPK; no new game data is needed.
 
 ## Controls
 
@@ -46,7 +48,7 @@ Use the front touchscreen, including two-finger box selection. **START** goes ba
 
 ## Hardware demo
 
-Maintainer-recorded footage of the earlier 00.06 build on PS Vita, not validation of 00.06-r1. Click for the video with audio.
+Maintainer-recorded footage of the earlier 00.06 build on PS Vita, not validation of 00.06-r2. Click for the video with audio.
 
 [![PSV touchscreen gameplay demo](media/demo.gif)](media/demo.mp4)
 
