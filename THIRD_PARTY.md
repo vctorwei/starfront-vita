@@ -41,6 +41,8 @@ The third-party GNU licenses retain their source-availability and redistribution
 
 ## Game support resources
 
+- **README cover:** the original high-resolution `splash_highres.pvr` / `splash_highres.bsprite` artwork in `sprites_1024.gla`, exported losslessly at its 960 × 640 sprite dimensions. The surrounding texture padding is excluded; the artwork is not redrawn or AI-generated.
+- **Hardware demo:** a PSV recording supplied by the project maintainer, published as MP4 with a silent GIF preview.
 - **Gameloft:** original game and artwork. The VPK contains resized original artwork for the Vita shell and the small `igli.bin` / `serialkey.txt` support resources used by the compatibility layer. The original APK, OBB, game library and full game data are not distributed here.
 - **Terrain shader adaptations:** the VPK's `compat/GloftSFHP/TerrainShaders/` contains two derived variants of shaders from the tested game's `effects.gla`. They remove the vertex-color attribute/varying and final color modulation for the corresponding material pass. They are adaptations, not recovered originals, and are not covered by the reference projects' MIT licenses.
 

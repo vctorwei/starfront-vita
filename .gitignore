@@ -1,4 +1,4 @@
-# Distribution repository: keep uploads to reviewed documentation and licenses.
+# Distribution repository: keep uploads to reviewed documentation and media.
 /*
 !/.gitignore
 !/README.md
@@ -8,6 +8,11 @@
 !/licenses/
 /licenses/*
 !/licenses/*.txt
+!/media/
+/media/*
+!/media/cover.png
+!/media/demo.mp4
+!/media/demo.gif
 
 # Binary releases are uploaded separately as VPK assets, never committed here.
 *.apk

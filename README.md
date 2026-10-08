@@ -1,7 +1,11 @@
+> **This project was generated using AI.** Thank you to everyone behind the earlier Vita ports: your work provided essential references for the AI throughout this project. Full project and contributor acknowledgements are listed in [Credits](#credits).
+
 <h1 align="center">Starfront: Collision HD<br>PlayStation Vita Port</h1>
 
 <p align="center">
-  <a href="https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6">Download VPK</a> ·
+  <a href="https://github.com/vctorwei/starfront-vita/releases/download/v0.0.6/Starfront-PSV-00.06.vpk"><strong>Download 00.06 VPK</strong></a> ·
+  <a href="https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6">Release page</a> ·
+  <a href="#hardware-demo">Demo</a> ·
   <a href="#installation">Installation</a> ·
   <a href="#controls">Controls</a> ·
   <a href="#status-and-known-issues">Known issues</a> ·
@@ -9,11 +13,15 @@
   <a href="README.zh-CN.md">简体中文</a>
 </p>
 
+<p align="center">
+  <img src="media/cover.png" alt="Original high-resolution Starfront: Collision HD in-game artwork" width="960">
+</p>
+
 An experimental PS Vita port of **Starfront: Collision HD**, Gameloft's real-time strategy game. The loader runs the original Android ARMv7 game library through a compatibility layer for Vita.
 
 **Development preview · 00.06 · Title ID `SFHP00001`**
 
-The campaign's first mission has been reached in an isolated Vita3K test environment. Complete campaign progression and long-term PSV hardware stability have not been verified. This release is a **prerelease**, not a finished port.
+Gameplay has been demonstrated on PSV hardware in the recording below. The campaign's first mission has also been reached in an isolated Vita3K test environment. Complete campaign progression and long-term PSV hardware stability have not been verified. This release is a **prerelease**, not a finished port.
 
 ## Downloads
 
@@ -22,6 +30,16 @@ The campaign's first mission has been reached in an isolated Vita3K test environ
 | [Starfront-PSV-00.06.vpk](https://github.com/vctorwei/starfront-vita/releases/download/v0.0.6/Starfront-PSV-00.06.vpk) | PSV hardware development build; file logging disabled |
 
 Release downloads contain **VPK files only**. No APK, OBB, original `libstarfront.so`, full game-data archive, saved games, or private test logs are uploaded. Supply your own Android game library and data.
+
+**[Open the 00.06 release and its Assets list](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6)** — this development build is listed as a **Pre-release**.
+
+## Hardware demo
+
+A 16-second PSV hardware recording supplied by the project maintainer. The animated preview below is silent; the full MP4 retains the recording's audio.
+
+[![PSV touchscreen gameplay demo](media/demo.gif)](media/demo.mp4)
+
+[Open the full demo](media/demo.mp4) · [Download MP4](https://raw.githubusercontent.com/vctorwei/starfront-vita/main/media/demo.mp4)
 
 ## Installation
 
@@ -98,7 +116,7 @@ For a bug report, [open an issue](https://github.com/vctorwei/starfront-vita/iss
 ### Port and reference projects
 
 - [vctorwei](https://github.com/vctorwei) — Starfront port project and PSV testing.
-- **Gameloft** — the original game and its artwork. The Vita cover uses artwork from the supplied game assets.
+- **Gameloft** — the original game and its artwork. The README cover uses the original high-resolution `splash_highres` sprite from `sprites_1024.gla`; the Vita cover also uses supplied game assets.
 - [Volodymyr Atamanenko](https://github.com/v-atamanenko), [Backstab Vita](https://github.com/v-atamanenko/backstab-vita) — reference for the related Gameloft engine, menus, graphics interfaces and LiveArea packaging.
 - [Volodymyr Atamanenko](https://github.com/v-atamanenko), [Modern Combat 3 Vita](https://github.com/v-atamanenko/mc3-vita) — reference for Android/Gameloft compatibility, shaders and the LiveArea layout; inspiration for this README's organization.
 - [WolffsRoom](https://github.com/WolffsRoom), [Modern Combat 2: Black Pegasus Vita](https://github.com/WolffsRoom/MC2BPegasus-Vita) and its upstream contributors — reference for JNI initialization and graphics compatibility.
@@ -126,6 +144,6 @@ Thanks to the **VitaSDK / VitaSDK softfp** developers; **Rinnegatamante** and co
 
 This is an independent homebrew project, unaffiliated with Gameloft or Sony. Starfront and the game artwork remain the property of their owners.
 
-This repository hosts release documentation and VPK downloads. It does not contain the development workspace or a source build tree. The VPK includes the compatibility loader, LiveArea artwork, small APK-derived support resources and the two terrain adaptations; it does not include the original native game library or the full game data. Use your own game installation.
+This repository hosts release documentation, cover artwork, a hardware demo and VPK downloads. It does not contain the development workspace or a source build tree. The VPK includes the compatibility loader, LiveArea artwork, small APK-derived support resources and the two terrain adaptations; it does not include the original native game library or the full game data. Use your own game installation.
 
 Third-party components keep their own license terms. See [LICENSE.md](LICENSE.md), [THIRD_PARTY.md](THIRD_PARTY.md), and [licenses/](licenses/). The upstream MIT notices are not a blanket MIT license for the combined VPK or for Gameloft's assets.

@@ -1,10 +1,24 @@
+> **本项目使用 AI 生成。** 感谢所有前人的 Vita 移植项目，你们的工作为 AI 完成本项目提供了重要参考。完整项目与贡献者名单见 [Credits](README.md#credits)。
+
 # Starfront: Collision HD · PSV 移植版
 
-[下载 VPK](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6) · [English / 完整 Credits](README.md#credits)
+[**直接下载 00.06 VPK**](https://github.com/vctorwei/starfront-vita/releases/download/v0.0.6/Starfront-PSV-00.06.vpk) · [Release 发布页](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6) · [真机演示](#真机演示) · [English / 完整 Credits](README.md#credits)
+
+![Starfront: Collision HD 游戏内高清原始封面](media/cover.png)
 
 **00.06 开发测试版，应用 ID：`SFHP00001`。**
 
-通过兼容层在 PSV 上加载原版 Android ARMv7 游戏库。隔离的 Vita3K 测试已进入战役第一关；完整战役、真机长期稳定性和本版封面更新效果尚未完成验证。
+通过兼容层在 PSV 上加载原版 Android ARMv7 游戏库。下方录像展示了 PSV 真机游戏运行；隔离的 Vita3K 测试也已进入战役第一关。完整战役、真机长期稳定性和本版封面更新效果尚未完成验证。
+
+00.06 已公开发布，GitHub 上标记为 **Pre-release（测试版）**。点击上方“直接下载”即可取得 VPK，也可在 Release 发布页的 **Assets** 中下载。
+
+## 真机演示
+
+项目维护者提供的 16 秒 PSV 真机录像。下方是无声动图，完整版 MP4 保留原录音。
+
+[![PSV 触屏操作演示](media/demo.gif)](media/demo.mp4)
+
+[打开完整演示](media/demo.mp4) · [下载 MP4](https://raw.githubusercontent.com/vctorwei/starfront-vita/main/media/demo.mp4)
 
 ## 已安装旧测试版
 
@@ -35,4 +49,4 @@
 
 完整名单见 [README 的 Credits](README.md#credits)，包含 **Backstab Vita、Modern Combat 3 Vita、Modern Combat 2: Black Pegasus Vita、GTA SA Vita** 四个参考项目，以及 MC3 原致谢中的 **TheFloW、Rinnegatamante、CatoTheYounger、Once13One、GrapheneCt**。MC3 的贡献归属按原项目说明，没有将其写成 Starfront 的直接贡献。
 
-本项目独立于 Gameloft 与 Sony。游戏及美术属于原权利人；依赖库各自保留许可。仓库仅发布说明和 VPK，不包含 APK、OBB、原版游戏库、完整资源、存档或调试日志。详见 [许可说明](LICENSE.md) 和 [第三方说明](THIRD_PARTY.md)。
+本项目独立于 Gameloft 与 Sony。游戏及美术属于原权利人；依赖库各自保留许可。仓库发布说明、游戏封面、真机演示和 VPK，不包含 APK、OBB、原版游戏库、完整资源、存档或调试日志。详见 [许可说明](LICENSE.md) 和 [第三方说明](THIRD_PARTY.md)。
