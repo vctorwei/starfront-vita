@@ -1,0 +1,20 @@
+# Distribution repository: keep uploads to reviewed documentation and licenses.
+/*
+!/.gitignore
+!/README.md
+!/README.zh-CN.md
+!/LICENSE.md
+!/THIRD_PARTY.md
+!/licenses/
+/licenses/*
+!/licenses/*.txt
+
+# Binary releases are uploaded separately as VPK assets, never committed here.
+*.apk
+*.obb
+*.so
+*.zip
+*.vpk
+*.psp2dmp
+*.log
+**/.DS_Store
