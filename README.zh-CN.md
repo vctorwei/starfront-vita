@@ -1,52 +1,58 @@
-> **本项目使用 AI 生成。** 感谢所有前人的 Vita 移植项目，你们的工作为 AI 完成本项目提供了重要参考。完整项目与贡献者名单见 [Credits](README.md#credits)。
+> **本项目使用 AI 生成。** 感谢所有前人的 Vita 移植项目，你们的工作为 AI 完成本项目提供了重要参考。
 
 # Starfront: Collision HD · PSV 移植版
 
-[**直接下载 00.06 VPK**](https://github.com/vctorwei/starfront-vita/releases/download/v0.0.6/Starfront-PSV-00.06.vpk) · [Release 发布页](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6) · [真机演示](#真机演示) · [English / 完整 Credits](README.md#credits)
+[**下载 00.06 VPK**](https://github.com/vctorwei/starfront-vita/releases/download/v0.0.6/Starfront-PSV-00.06.vpk) · [Release](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6) · [安装教程](#安装教程) · [真机演示](#真机演示) · [English / Credits](README.md#credits)
 
 ![Starfront: Collision HD 游戏内高清原始封面](media/cover.png)
 
-**00.06 开发测试版，应用 ID：`SFHP00001`。**
+Gameloft《Starfront: Collision HD》的 PSV 移植版。需要 **Android 1.0.0 版本 APK 和配套的 1.0.0 OBB 资源**，不支持其他版本。
 
-通过兼容层在 PSV 上加载原版 Android ARMv7 游戏库。下方录像展示了 PSV 真机游戏运行；隔离的 Vita3K 测试也已进入战役第一关。完整战役、真机长期稳定性和本版封面更新效果尚未完成验证。
+**00.06 为开发测试版。** 完整战役与长期稳定性仍在测试中，LiveArea 背景可能仍显示旧图。
 
-00.06 已公开发布，GitHub 上标记为 **Pre-release（测试版）**。点击上方“直接下载”即可取得 VPK，也可在 Release 发布页的 **Assets** 中下载。
+## 免责声明
+
+Starfront: Collision HD © 2011 Gameloft。游戏、美术、名称和商标归各自权利人所有。本项目为非官方社区移植，未经 Gameloft 或 Sony 制作、授权或认可。
+
+本项目不提供原版 APK、OBB 或游戏执行文件。玩家必须自行持有合法取得的游戏副本。项目作者不支持或鼓励盗版。
+
+## 安装教程
+
+1. 安装 [kubridge](https://github.com/bythos14/kubridge)：将 `kubridge.skprx` 放入 `ur0:tai/`，在 `ur0:tai/config.txt` 中添加以下配置，然后重启：
+
+   ```text
+   *KERNEL
+   ur0:tai/kubridge.skprx
+   ```
+
+2. 确认 `ur0:data/` 中有 `libshacccg.suprx`；没有的话使用 [ShaRKBR33D](https://github.com/Rinnegatamante/ShaRKBR33D) 安装。
+3. 准备自己的 **Starfront: Collision HD Android 1.0.0 APK 和配套 OBB**。用 [7-Zip](https://www.7-zip.org/) 等解压工具打开 APK，将 `lib/armeabi-v7a/libstarfront.so` 放到 `ux0:data/starfront/libstarfront.so`。
+4. 解包 OBB 资源，将完整 `GloftSFHP` 文件夹复制到 `ux0:data/starfront/GloftSFHP/`。将 APK 中的 `assets/data.save` 分别复制到 `ux0:data/starfront/GloftSFHP/data.save` 和 `ux0:data/starfront/save/files/data.save`。**更新时不要覆盖已有存档。**
+5. 下载 [VPK](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6)，用解压工具打开，将其中 `compat/GloftSFHP` 的内容复制到 `ux0:data/starfront/GloftSFHP/`。
+6. 用 [VitaShell](https://github.com/TheOfficialFloW/VitaShell) 安装 VPK，启动 **Starfront Test**，检查通过后按 **×** 进入游戏。
+
+**已安装旧测试版：** 保留资源与存档，直接覆盖安装 VPK 即可。
+
+## 操作
+
+使用前触屏操作，支持双指框选。**START** 返回，**SELECT + START** 退出。暂不支持完整按键操作。
 
 ## 真机演示
 
-项目维护者提供的 16 秒 PSV 真机录像。下方是无声动图，完整版 MP4 保留原录音。
+16 秒 PSV 真机录像。点击无声动图可打开带声音的完整视频。
 
 [![PSV 触屏操作演示](media/demo.gif)](media/demo.mp4)
 
-[打开完整演示](media/demo.mp4) · [下载 MP4](https://raw.githubusercontent.com/vctorwei/starfront-vita/main/media/demo.mp4)
-
-## 已安装旧测试版
-
-在 VitaShell 中覆盖安装 00.06 VPK。原资源和存档保留，PSV 包关闭 `port.log`，继续使用 1024×600 逻辑布局。00.07 新增的启动封面更新逻辑已撤回，整张 LiveArea 页面未更新的问题仍保留。
-
-## 首次安装
-
-1. 准备可运行自制程序的 PSV、VitaShell 和已加载的 [kubridge](https://github.com/bythos14/kubridge)。`libshacccg.suprx` 应位于 `ur0:data/` 或 `ur0:data/external/`；可参阅 [ShaRKBR33D](https://github.com/Rinnegatamante/ShaRKBR33D)。修改内核插件后需要重启。
-2. 从自己持有的 Android 1.0.0 APK 提取 `lib/armeabi-v7a/libstarfront.so`，放到 `ux0:data/starfront/libstarfront.so`。本测试版只支持 8,733,105 字节、SHA-256 为以下值的库：
-
-   ```text
-   a362b3b46cacad41d3d6c2961b5e4c1dce0027dd4a3c027471652665c275a618
-   ```
-
-3. 把完整解包后的 `GloftSFHP` 目录放到 `ux0:data/starfront/GloftSFHP/`，约 1.02 GiB。首次安装时，把 APK 中 `assets/data.save` 分别复制到 `ux0:data/starfront/GloftSFHP/data.save` 和 `ux0:data/starfront/save/files/data.save`。更新时不要覆盖已有存档。原样放入 APK 或 OBB 不能代替解包。
-4. 用 ZIP 解压工具打开下载的 VPK，将其中 `compat/GloftSFHP` 合并到 `ux0:data/starfront/GloftSFHP/`，补齐两份地形适配 shader。已有这两份文件的旧测试用户可以跳过。Release 只提供 VPK，不另发补丁 ZIP。
-5. 使用 VitaShell 安装 VPK，打开 **Starfront Test**。看到 `Preflight passed` 后按 **×**。00.06 不执行自动 LiveArea 登记，封面页面问题仍待单独修复。
-
-## 操作与问题反馈
-
-前触屏操作菜单和游戏，双指使用原版多点触控；START 对应返回，SELECT + START 退出。× 只用于启动检查页。尚未实现完整按键操作方案。
-
-成就修复写入本地 `androidTrophy.dat`，不提供 PSN 奖杯。音频听感、存档恢复、完整战役、联网及长期真机表现仍需测试；未知 Android/JNI 调用可能停止并显示错误。当前公开包面向 PSV，不能据此保证标准 Vita3K 的兼容性。
-
-遇到问题请在 [Issues](https://github.com/vctorwei/starfront-vita/issues) 提供版本、设备与固件、复现步骤和完整错误照片。PSV 包不写 `port.log`。出现 `C2-12828-1` 时附上系统显示的转储文件名，不要上传 APK、OBB 或游戏资源包。
+[下载 MP4](https://raw.githubusercontent.com/vctorwei/starfront-vita/main/media/demo.mp4)
 
 ## 致谢
 
-完整名单见 [README 的 Credits](README.md#credits)，包含 **Backstab Vita、Modern Combat 3 Vita、Modern Combat 2: Black Pegasus Vita、GTA SA Vita** 四个参考项目，以及 MC3 原致谢中的 **TheFloW、Rinnegatamante、CatoTheYounger、Once13One、GrapheneCt**。MC3 的贡献归属按原项目说明，没有将其写成 Starfront 的直接贡献。
+感谢 Gameloft、TheFloW、Volodymyr Atamanenko、WolffsRoom、Rinnegatamante、CatoTheYounger、Once13One、GrapheneCt，以及所有 Vita 工具与移植项目的贡献者。
 
-本项目独立于 Gameloft 与 Sony。游戏及美术属于原权利人；依赖库各自保留许可。仓库发布说明、游戏封面、真机演示和 VPK，不包含 APK、OBB、原版游戏库、完整资源、存档或调试日志。详见 [许可说明](LICENSE.md) 和 [第三方说明](THIRD_PARTY.md)。
+参考项目包括 **Backstab Vita、Modern Combat 3 Vita、Modern Combat 2 Vita、GTA SA Vita**。完整名单及链接见 [Credits](README.md#credits)。
+
+## 许可证
+
+项目原创内容使用 [MIT 许可证](LICENSE.md)，第三方组件与游戏素材保留原有许可。
+
+[第三方致谢](THIRD_PARTY.md) · [反馈问题](https://github.com/vctorwei/starfront-vita/issues)

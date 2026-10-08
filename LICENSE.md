@@ -1,12 +1,21 @@
-# Licensing scope
+MIT License
 
-This distribution contains components under different licenses; it is not licensed as a single MIT work.
+Copyright (c) 2026 vctorwei
 
-- The original game, its Android executables, data and artwork belong to their respective rights holders. No license to those materials is granted by this repository.
-- The Android ELF-loader foundation retains Andy Nguyen's MIT notice.
-- The Backstab, MC3, MC2 and GTA SA reference projects retain their own MIT notices. Acknowledging a reference does not transfer ownership or imply endorsement.
-- vitaGL and vitaShaRK carry GNU LGPL v3 notices. Their accompanying GPL v3 text is included.
-- The linked PolarSSL 1.3.9 headers specify GPL v2 or later. Its applicable terms continue to apply to that component and distribution.
-- Other third-party components retain their own notices and terms; see [THIRD_PARTY.md](THIRD_PARTY.md).
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Verbatim license notices are collected in [licenses/](licenses/) and included in the release VPK. These notices do not replace any source-availability or redistribution conditions in the original licenses. The source development workspace is not part of this documentation-and-binary repository.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
