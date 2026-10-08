@@ -13,3 +13,4 @@ int sceAudioOutReleasePort(int port);
 int sceAudioOutOutput(int port, const void *pcm);
 int sceAudioOutSetConfig(int port, int len, int freq, int mode);
 int sceAudioOutSetVolume(int port, int flags, const int *volumes);
+int sceAudioOutGetRestSample(int port);

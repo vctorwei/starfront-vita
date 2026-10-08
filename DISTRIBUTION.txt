@@ -1,10 +1,10 @@
-Starfront Android 1.0.0 loader for PS Vita — 00.06-r3
+Starfront Android 1.0.0 loader for PS Vita — 00.06-r4
 Copyright (c) 2026 vctorwei and the upstream authors listed in THIRD_PARTY.md.
 Combined executable: GNU GPL version 3; no warranty. Original portions: MIT.
 
 Corresponding source, dependency source, local modifications and build scripts:
-https://github.com/vctorwei/starfront-vita/tree/v0.0.6-r3
-https://github.com/vctorwei/starfront-vita/archive/refs/tags/v0.0.6-r3.zip
+https://github.com/vctorwei/starfront-vita/tree/v0.0.6-r4
+https://github.com/vctorwei/starfront-vita/archive/refs/tags/v0.0.6-r4.zip
 
 See docs/BUILD.md for building and relinking modified versions.
 This VPK includes credited game artwork and an AI-generated LiveArea launch card.
@@ -13,6 +13,7 @@ Prepare your own legally obtained
 Android 1.0.0 APK/data using scripts/prepare_game.py from that source release.
 Game data belongs in ux0:data/starfront/. No project signing key is needed.
 APP_VER remains 00.06. Normal PSV startup no longer opens the debug screen;
-fatal errors still show their message. The r3 executable differs from r1/r2
-only through this logging module change. vitaGL initialization is retained.
+fatal errors still show their message. Relative to r3, the audio backend now uses aligned alternating buffers,
+continuous output and hardware playback-head accounting. vitaGL initialization
+and quiet startup are retained. Listening on real hardware is still required.
 Logical resolution 1024x600, output 960x544; file logging disabled; no CROSS confirmation.

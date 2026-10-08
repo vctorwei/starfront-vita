@@ -10,7 +10,7 @@
 #include <psp2/audioout.h>
 
 static int opens, releases, outputs, drains, configs, current_frames, port_live;
-static int open_error, release_error, config_error, volume_error;
+static int open_error, release_error, config_error, volume_error, rest_error;
 static int fail_output_call, fail_drain_call;
 static int output_returns_frames;
 static int last_volume[2];
@@ -18,7 +18,20 @@ static unsigned char captured[SF_AUDIO_BUFFER_BYTES * 8];
 static size_t captured_bytes;
 static pthread_mutex_t mock_mutex = PTHREAD_MUTEX_INITIALIZER;
 static pthread_cond_t mock_cond = PTHREAD_COND_INITIALIZER;
-static int block_drain, drain_entered, allow_drain;
+static int block_output, output_entered, allow_output;
+static const void *pending_pcm;
+static unsigned char pending_copy[SF_AUDIO_BUFFER_BYTES];
+static size_t pending_bytes;
+static int remaining_frames;
+
+/* Model deferred consumption, not an immediate memcpy-only audio device.
+ * The previous buffer must remain valid until the next blocking submission. */
+static void finish_pending(void) {
+    if (pending_pcm) assert(!memcmp(pending_pcm, pending_copy, pending_bytes));
+    pending_pcm = NULL;
+    pending_bytes = 0;
+    remaining_frames = 0;
+}
 
 int sceAudioOutOpenPort(int type, int len, int freq, int mode) {
     assert(type == SCE_AUDIO_OUT_PORT_TYPE_BGM);
@@ -35,6 +48,7 @@ int sceAudioOutReleasePort(int port) {
     assert(port == 27 && port_live);
     ++releases;
     if (release_error) return release_error;
+    finish_pending();
     port_live = 0;
     return 0;
 }
@@ -60,34 +74,49 @@ int sceAudioOutSetVolume(int port, int flags, const int *volumes) {
 int sceAudioOutOutput(int port, const void *pcm) {
     assert(port == 27 && port_live);
     if (pcm) {
+        assert(((uintptr_t)pcm & 63) == 0);
+        assert(pcm != pending_pcm);
+        if (pending_pcm) assert(!memcmp(pending_pcm, pending_copy, pending_bytes));
         ++outputs;
         if (outputs == fail_output_call) return -101;
+        pthread_mutex_lock(&mock_mutex);
+        if (block_output) {
+            output_entered = 1;
+            pthread_cond_broadcast(&mock_cond);
+            while (!allow_output) pthread_cond_wait(&mock_cond, &mock_mutex);
+        }
+        pthread_mutex_unlock(&mock_mutex);
+        finish_pending();
         size_t bytes = (size_t)current_frames * 4;
         assert(captured_bytes + bytes <= sizeof(captured));
         memcpy(captured + captured_bytes, pcm, bytes);
         captured_bytes += bytes;
+        pending_pcm = pcm;
+        pending_bytes = bytes;
+        memcpy(pending_copy, pcm, bytes);
+        remaining_frames = current_frames;
         return output_returns_frames ? current_frames : 0;
     }
     ++drains;
     if (drains == fail_drain_call) return -102;
-    pthread_mutex_lock(&mock_mutex);
-    if (block_drain) {
-        drain_entered = 1;
-        pthread_cond_broadcast(&mock_cond);
-        while (!allow_drain) pthread_cond_wait(&mock_cond, &mock_mutex);
-    }
-    pthread_mutex_unlock(&mock_mutex);
+    finish_pending();
     return 0;
+}
+
+int sceAudioOutGetRestSample(int port) {
+    assert(port == 27 && port_live);
+    return rest_error ? rest_error : remaining_frames;
 }
 
 static void reset_mock(void) {
     assert(!port_live);
     opens = releases = outputs = drains = configs = current_frames = 0;
-    open_error = release_error = config_error = volume_error = 0;
+    open_error = release_error = config_error = volume_error = rest_error = 0;
     fail_output_call = fail_drain_call = 0;
     output_returns_frames = 0;
     captured_bytes = 0;
-    block_drain = drain_entered = allow_drain = 0;
+    block_output = output_entered = allow_output = 0;
+    assert(!pending_pcm && !remaining_frames);
     last_volume[0] = last_volume[1] = -1;
 }
 
@@ -147,10 +176,10 @@ int main(void) {
     assert(sf_audio_track_write(track, samples, 4) == SF_AUDIO_BAD_VALUE);
     assert(!outputs && !head(track));
     assert(sf_audio_track_write(track, samples + 1, 4096 * 2 + 64 * 4) == 4096 * 2 + 64 * 4);
-    assert(outputs == 3 && drains == 3 && configs == 1);
+    assert(outputs == 3 && drains == 1 && configs == 1);
     assert(captured_bytes == 4096 * 2 + 64 * 4);
     assert(!memcmp(captured, samples + 1, captured_bytes));
-    assert(head(track) == 2048 + 64);
+    assert(head(track) == 2048); /* Last 64 frames are still queued. */
     assert(sf_audio_track_write(track, samples, 256 + 4) == 256);
     assert(captured_bytes == 4096 * 2 + 64 * 4 + 256);
     assert(!memcmp(captured + captured_bytes - 256, samples, 256));
@@ -183,12 +212,16 @@ int main(void) {
     assert(sf_audio_track_play(track) == 0);
     output_returns_frames = 1;
     assert(sf_audio_track_write(track, samples, 4096) == 4096);
-    assert(outputs == 1 && drains == 1 && head(track) == 1024);
+    assert(outputs == 1 && drains == 0 && head(track) == 0);
+    remaining_frames = 512;
+    assert(head(track) == 512 && drains == 0);
+    finish_pending();
+    assert(head(track) == 1024 && drains == 0);
     assert(captured_bytes == 4096 && !memcmp(captured, samples, 4096));
     assert(sf_audio_track_destroy(&track) == 0);
     reset_mock();
 
-    /* A failed second output reports only the first real completed block. */
+    /* A failed second output reports only the first accepted block. */
     track = create();
     assert(sf_audio_track_play(track) == 0);
     fail_output_call = 2;
@@ -197,18 +230,26 @@ int main(void) {
     assert(sf_audio_track_state(track) == 0);
     assert(sf_audio_track_last_platform_error(track) == -101);
     uint32_t frames = 0;
-    assert(sf_audio_track_playback_head(track, &frames) == -3 && frames == 1024);
+    assert(sf_audio_track_playback_head(track, &frames) == -3);
     assert(sf_audio_track_write(track, samples, 4096) == -3);
     assert(sf_audio_track_destroy(&track) == 0);
     reset_mock();
 
     track = create();
     assert(sf_audio_track_play(track) == 0);
+    assert(sf_audio_track_write(track, samples, 4096) == 4096 && drains == 0);
     fail_drain_call = 1;
-    assert(sf_audio_track_write(track, samples, 4096) == -1);
+    assert(sf_audio_track_write(track, samples, 256) == -1); /* Reconfigure drain fails. */
     assert(sf_audio_track_last_platform_error(track) == -102);
     frames = 99;
     assert(sf_audio_track_playback_head(track, &frames) == -3 && frames == 0);
+    assert(sf_audio_track_destroy(&track) == 0);
+    reset_mock();
+
+    track = create();
+    rest_error = -107;
+    assert(sf_audio_track_playback_head(track, &frames) == SF_AUDIO_ERROR);
+    assert(sf_audio_track_last_platform_error(track) == -107);
     assert(sf_audio_track_destroy(&track) == 0);
     reset_mock();
 
@@ -236,24 +277,44 @@ int main(void) {
     assert(sf_audio_track_destroy(&track) == 0 && !track && !port_live);
     reset_mock();
 
-    /* Returning from write is contingent on the real platform drain. */
+    /* Caller memory may change immediately, but in-flight audio cannot.
+     * Three writes also exercise reuse of the first owned buffer. No silence,
+     * drain calls, reconfiguration, duplication or dropped PCM may be inserted. */
     track = create();
     assert(sf_audio_track_play(track) == 0);
+    unsigned char caller[4096];
+    for (int i = 0; i < 3; ++i) {
+        memcpy(caller, samples + i * 4096, 4096);
+        assert(sf_audio_track_write(track, caller, sizeof(caller)) == sizeof(caller));
+        memset(caller, 0, sizeof(caller));
+    }
+    assert(outputs == 3 && drains == 0 && configs == 0);
+    assert(captured_bytes == 3 * 4096 && !memcmp(captured, samples, captured_bytes));
+    assert(head(track) == 2048);
+    assert(sf_audio_track_pause(track) == 0 && head(track) == 3072);
+    assert(sf_audio_track_destroy(&track) == 0);
+    reset_mock();
+
+    /* Backpressure comes from a blocking submission, without a per-block drain. */
+    track = create();
+    assert(sf_audio_track_play(track) == 0);
+    assert(sf_audio_track_write(track, samples + 1, 4096) == 4096);
     writer_track = track;
-    block_drain = 1;
+    block_output = 1;
     atomic_store(&writer_done, 0);
     pthread_t thread;
     assert(pthread_create(&thread, NULL, writer, NULL) == 0);
     pthread_mutex_lock(&mock_mutex);
-    while (!drain_entered) pthread_cond_wait(&mock_cond, &mock_mutex);
+    while (!output_entered) pthread_cond_wait(&mock_cond, &mock_mutex);
     assert(!atomic_load(&writer_done));
     assert(captured_bytes == 4096 && !memcmp(captured, samples + 1, 4096));
-    allow_drain = 1;
+    allow_output = 1;
     pthread_cond_broadcast(&mock_cond);
     pthread_mutex_unlock(&mock_mutex);
     assert(pthread_join(thread, NULL) == 0);
     assert(atomic_load(&writer_done) && writer_result == 4096 && head(track) == 1024);
-    block_drain = 0;
+    assert(drains == 0);
+    block_output = 0;
     assert(sf_audio_track_destroy(&track) == 0);
     puts("AudioTrack PCM output, backpressure, state and failure tests passed");
     return 0;

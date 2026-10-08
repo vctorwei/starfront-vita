@@ -2,7 +2,7 @@
 
 # Starfront: Collision HD · PS Vita Loader
 
-[**下载 VPK**](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6-r3) · [安装教程](#安装教程) · [真机演示](#真机演示) · [English / Credits](README.md#credits)
+[**下载 VPK**](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6-r4) · [安装教程](#安装教程) · [真机演示](#真机演示) · [English / Credits](README.md#credits)
 
 [![Gameloft 发布的 Starfront 宣传截图](https://pbs.twimg.com/media/DWP4997W4AEr0pW.jpg)](https://x.com/gameloft/status/964888517984837637)
 
@@ -10,7 +10,7 @@
 
 本项目是 **Starfront: Collision HD Android 1.0.0 的加载器（loader）**，基于 TheFloW 的 Android SO loader，提供运行原版 ARMv7 游戏所需的 Android 兼容接口。玩家需自备 **1.0.0 APK 和配套 OBB / 游戏数据**。
 
-**00.06-r3 是基于 00.06 的开发测试版**，更新 Starfront 风格的 “New Mission” 启动卡片和安装信息。PSV 正常启动不再显示调试文字，出错时仍显示原因；完整战役稳定性仍待验证。
+**00.06-r4 是基于 00.06 的开发测试版**，调整音频缓冲以解决杂音和断续，保留 New Mission 系统入口和安静启动。声音改善仍待真机试听确认，完整战役稳定性仍待验证。
 
 ## 免责声明
 
@@ -36,11 +36,11 @@ Starfront: Collision HD © 2011 Gameloft。游戏及相关名称、美术和商�
 
    Windows 将 `python3` 换为 `py -3`。`--data` 可以是解包后的 `GloftSFHP` 文件夹，也可以是 ZIP 格式的 OBB / 数据压缩包。脚本会校验 APK 并在本机准备资源，不下载游戏文件。
 4. 将生成的 `starfront` 文件夹复制到 `ux0:data/starfront/`。**更新时保留已有存档，不要覆盖已有的 `data.save` 文件。**
-5. 用 [VitaShell](https://github.com/TheOfficialFloW/VitaShell) 安装 [VPK](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6-r3)，打开 **Starfront Test**，检查通过后自动进入游戏，无需按 **×**。
+5. 用 [VitaShell](https://github.com/TheOfficialFloW/VitaShell) 安装 [VPK](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6-r4)，打开 **Starfront Test**，检查通过后自动进入游戏，无需按 **×**。
 
 **从 00.06 更新：** 仍需运行一次准备脚本，补上新增的 `apk/igli.bin` 和 `apk/serialkey.txt`，再覆盖安装 VPK。继续使用 1024×600 整体缩放至 960×544，关闭文件日志。
 
-**从 r1/r2 更新：** 安装 VPK 即可，不用重传资源。如果仍显示默认系统页面，先重启；必要时仅删除 Starfront 气泡再重装，保留 `ux0:data/starfront/` 和存档。
+**从 r1/r2/r3 更新：** 安装 VPK 即可，不用重传资源。如果仍显示默认系统页面，先重启；必要时仅删除 Starfront 气泡再重装，保留 `ux0:data/starfront/` 和存档。
 
 ## 操作
 

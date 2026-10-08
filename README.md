@@ -2,7 +2,7 @@
 
 # Starfront: Collision HD · PS Vita Loader
 
-[**Download VPK**](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6-r3) · [Installation](#installation) · [Demo](#hardware-demo) · [Credits](#credits) · [简体中文](README.zh-CN.md)
+[**Download VPK**](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6-r4) · [Installation](#installation) · [Demo](#hardware-demo) · [Credits](#credits) · [简体中文](README.zh-CN.md)
 
 [![Starfront promotional screenshot published by Gameloft](https://pbs.twimg.com/media/DWP4997W4AEr0pW.jpg)](https://x.com/gameloft/status/964888517984837637)
 
@@ -10,7 +10,7 @@
 
 This repository contains a loader for the **Android 1.0.0 release of Starfront: Collision HD**, based on TheFloW's Android SO loader. It supplies the Android compatibility functions needed to run the original ARMv7 executable on PS Vita. You need your own **1.0.0 APK and matching OBB/data**.
 
-**00.06-r3 is a development preview based on 00.06.** It updates the LiveArea with a Starfront-style “New Mission” launch card and corrected installation metadata. Normal PSV startup is now silent; errors still show a diagnostic screen. Full campaign stability remains unverified.
+**00.06-r4 is a development preview based on 00.06.** It updates audio buffering to address crackling and gaps. The New Mission LiveArea and silent startup are retained. Audio improvements await real-hardware listening confirmation; full campaign stability remains unverified.
 
 ## Disclaimer
 
@@ -36,11 +36,11 @@ The loader includes game artwork for the Vita system UI, credited to Gameloft. I
 
    On Windows, use `py -3` instead of `python3`. `--data` accepts the unpacked `GloftSFHP` folder or a ZIP-compatible OBB/data archive. The script checks the APK and prepares everything locally; it downloads no game files.
 4. Copy the resulting `starfront` folder to `ux0:data/starfront/`. **Keep existing saves when updating.** Merge the prepared files without replacing your existing `data.save` files.
-5. Install the [VPK](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6-r3) with [VitaShell](https://github.com/TheOfficialFloW/VitaShell), open **Starfront Test**. The game starts automatically after the startup checks pass.
+5. Install the [VPK](https://github.com/vctorwei/starfront-vita/releases/tag/v0.0.6-r4) with [VitaShell](https://github.com/TheOfficialFloW/VitaShell), open **Starfront Test**. The game starts automatically after the startup checks pass.
 
 **Updating from 00.06:** run preparation once to obtain the newly required `apk/igli.bin` and `apk/serialkey.txt`, copy them alongside the existing data, then install the new VPK. Resolution remains 1024×600 scaled to 960×544; file logging is disabled.
 
-**Updating from r1/r2:** install the VPK; no new game data is needed. If the default LiveArea remains, restart the console. If necessary, delete only the Starfront bubble and reinstall, keeping `ux0:data/starfront/` and your saves.
+**Updating from r1/r2/r3:** install the VPK; no new game data is needed. If the default LiveArea remains, restart the console. If necessary, delete only the Starfront bubble and reinstall, keeping `ux0:data/starfront/` and your saves.
 
 ## Controls
 
@@ -62,6 +62,7 @@ Maintainer-recorded footage of the earlier 00.06 build on PS Vita, not a demonst
 - [Rocroverss](https://github.com/Rocroverss) and contributors — [Gun Bros PSVita](https://github.com/Rocroverss/Gun-Bros-Psvita), an additional Vita LiveArea packaging reference.
 - [Rinnegatamante](https://github.com/Rinnegatamante) — vitaGL, vitaShaRK and Vita porting work.
 - [CatoTheYounger](https://github.com/CatoTheYounger97), [Once13One](https://github.com/once13one), [GrapheneCt](https://github.com/GrapheneCt), and all contributors to the reference ports.
+- [SDL contributors](https://github.com/libsdl-org/SDL) — reference for continuous Vita audio buffering.
 - **VitaSDK, SceShaccCgExt, kubridge, VitaShell, Vita3K, PSPSDK, AOSP / Apache Harmony, pthreads, math-neon, zlib and PolarSSL** developers.
 
 ## License

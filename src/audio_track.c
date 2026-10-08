@@ -7,7 +7,8 @@
 #include <string.h>
 #include <psp2/audioout.h>
 
-enum { FRAME_BYTES = 4, OUTPUT_FRAMES = SF_AUDIO_BUFFER_BYTES / FRAME_BYTES };
+enum { FRAME_BYTES = 4, OUTPUT_FRAMES = SF_AUDIO_BUFFER_BYTES / FRAME_BYTES,
+       OUTPUT_BUFFERS = 2, BUFFER_ALIGNMENT = 64 };
 
 struct SfAudioTrack {
     pthread_mutex_t mutex;
@@ -16,8 +17,9 @@ struct SfAudioTrack {
     int play_state;
     int output_frames;
     int last_platform_error;
-    uint32_t played_frames;
-    int16_t buffer[OUTPUT_FRAMES * 2];
+    uint32_t submitted_frames;
+    unsigned next_buffer;
+    unsigned char buffer_storage[SF_AUDIO_BUFFER_BYTES * OUTPUT_BUFFERS + BUFFER_ALIGNMENT - 1];
 };
 
 static int valid_format(int rate, int mask, int encoding) {
@@ -118,7 +120,7 @@ static int control(SfAudioTrack *track, int state, int reset_head, int flush_onl
             if (result < 0) result = platform_failure(track, result);
             else {
                 if (!flush_only) track->play_state = state;
-                if (reset_head) track->played_frames = 0;
+                if (reset_head) track->submitted_frames = 0;
                 result = 0;
             }
         }
@@ -180,6 +182,13 @@ int sf_audio_track_write(SfAudioTrack *track, const void *pcm, size_t bytes) {
         int count = frames > OUTPUT_FRAMES ? OUTPUT_FRAMES : (int)frames;
         int error;
         if (track->output_frames != count) {
+            /* A format change needs an idle port. Normal 1024-frame mixer
+             * writes keep a fixed configuration and never drain between blocks. */
+            error = sceAudioOutOutput(track->port, NULL);
+            if (error < 0) {
+                result = platform_failure(track, error);
+                break;
+            }
             error = sceAudioOutSetConfig(track->port, count, 44100, SCE_AUDIO_OUT_MODE_STEREO);
             if (error < 0) {
                 result = platform_failure(track, error);
@@ -187,20 +196,22 @@ int sf_audio_track_write(SfAudioTrack *track, const void *pcm, size_t bytes) {
             }
             track->output_frames = count;
         }
-        memcpy(track->buffer, (const unsigned char *)pcm + completed, count * FRAME_BYTES);
-        error = sceAudioOutOutput(track->port, track->buffer);
+        uintptr_t aligned = ((uintptr_t)track->buffer_storage + BUFFER_ALIGNMENT - 1)
+                            & ~(uintptr_t)(BUFFER_ALIGNMENT - 1);
+        unsigned char *buffer = (unsigned char *)aligned
+                                + track->next_buffer * SF_AUDIO_BUFFER_BYTES;
+        memcpy(buffer, (const unsigned char *)pcm + completed, count * FRAME_BYTES);
+        error = sceAudioOutOutput(track->port, buffer);
         if (error < 0) {
             result = platform_failure(track, error);
             break;
         }
-        /* Keep the source storage unchanged until all submitted samples play.
-         * This also makes playback-head accounting reflect consumed PCM. */
-        error = sceAudioOutOutput(track->port, NULL);
-        if (error < 0) {
-            result = platform_failure(track, error);
-            break;
-        }
-        track->played_frames += (uint32_t)count;
+        /* Like SDL's Vita backend, alternate two aligned buffers. Output
+         * supplies hardware backpressure; the other buffer stays untouched
+         * while it is in flight. Draining after every write starves the queue.
+         * https://github.com/libsdl-org/SDL/blob/SDL2/src/audio/vita/SDL_vitaaudio.c */
+        track->next_buffer = (track->next_buffer + 1) % OUTPUT_BUFFERS;
+        track->submitted_frames += (uint32_t)count;
         completed += (size_t)count * FRAME_BYTES;
         frames -= (size_t)count;
         result = (int)completed;
@@ -230,8 +241,18 @@ int sf_audio_track_play_state(SfAudioTrack *track) {
 int sf_audio_track_playback_head(SfAudioTrack *track, uint32_t *frames) {
     if (!track || !frames) return SF_AUDIO_BAD_VALUE;
     pthread_mutex_lock(&track->mutex);
-    *frames = track->played_frames;
-    int result = track->state == SF_AUDIO_STATE_INITIALIZED ? 0 : SF_AUDIO_INVALID_OPERATION;
+    *frames = 0;
+    int result = SF_AUDIO_INVALID_OPERATION;
+    if (track->state == SF_AUDIO_STATE_INITIALIZED) {
+        int remaining = sceAudioOutGetRestSample(track->port);
+        if (remaining < 0) result = platform_failure(track, remaining);
+        else {
+            /* Accepted samples may still be playing. Preserve Android's
+             * unsigned 32-bit playback-head wrap without draining the device. */
+            *frames = track->submitted_frames - (uint32_t)remaining;
+            result = 0;
+        }
+    }
     pthread_mutex_unlock(&track->mutex);
     return result;
 }

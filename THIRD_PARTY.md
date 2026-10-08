@@ -15,6 +15,8 @@ remain intact; they do not grant rights to the original game or system software.
 
 Additional reference: [Gun Bros PSVita](https://github.com/Rocroverss/Gun-Bros-Psvita) by Rocroverss and contributors, revision `dab9e6a22b77c352bb74baf12787501c53d4e1c7`, reviewed for Vita system LiveArea templates and VPK packaging. No Gun Bros game assets or runtime code are included; the LiveArea XML arrangement is adapted with its MIT notice preserved in `licenses/Gun-Bros-MIT.txt`.
 
+Additional audio reference: [SDL Vita audio backend](https://github.com/libsdl-org/SDL/blob/SDL2/src/audio/vita/SDL_vitaaudio.c), by the SDL contributors, reviewed for aligned double buffering and blocking output. SDL is not a linked dependency; this project retains its own AudioTrack implementation.
+
 Their MIT notices are reproduced in `licenses/`. Reference acknowledgement does not imply that each project's code, configuration tools or artwork is bundled with Starfront.
 
 ## Contributors acknowledged by MC3

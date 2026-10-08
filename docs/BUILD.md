@@ -1,4 +1,4 @@
-# Building and relinking 00.06-r3
+# Building and relinking 00.06-r4
 
 Use a **softfp VitaSDK** with CMake 3.18+, Python 3.9+ and a Make or Ninja build tool.
 The release was built on macOS with the VitaSDK `softfp-osx-v2.228` toolchain
@@ -87,3 +87,22 @@ the new generated card has only received static format and readability checks.
 
 The website promotional screenshot is only externally linked; it is not part of
 the loader, its shell artwork, or the build inputs.
+
+
+00.06-r4 changes the audio backend relative to r3. Two 64-byte-aligned PCM
+buffers alternate on the existing 44.1 kHz stereo output port. Normal writes
+wait for platform acceptance without draining every 1024-frame block. Controls,
+release and buffer-size changes still drain; playback-head queries subtract the
+hardware remainder. No resampling, extra worker thread or file logging is added.
+
+References: [SDL Vita audio backend](https://github.com/libsdl-org/SDL/blob/SDL2/src/audio/vita/SDL_vitaaudio.c)
+and [VitaSDK audio API](https://github.com/vitasdk/vita-headers/blob/master/include/psp2/audioout.h).
+The backend tests model deferred buffer consumption and blocking submissions,
+check exact PCM preservation, and cover pause/release and errors. JNI audio tests
+also pass. These checks do not establish the audible result on a real Vita.
+
+```sh
+cc -std=c11 -Wall -Wextra -Werror -pthread -Itests/stubs -Isrc src/audio_track.c tests/test_audio_track.c -o /tmp/starfront-audio-test
+/tmp/starfront-audio-test
+python3 -m unittest discover -s tests -p test_jni_audio.py
+```
