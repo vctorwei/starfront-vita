@@ -1,0 +1,1786 @@
+[
+  {
+    "import": "_ZSt7nothrow",
+    "target": "_ZSt7nothrow",
+    "status": "SDK"
+  },
+  {
+    "import": "_ZnajRKSt9nothrow_t",
+    "target": "_ZnajRKSt9nothrow_t",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_atexit",
+    "target": "__aeabi_atexit",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_d2iz",
+    "target": "__aeabi_d2iz",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_d2lz",
+    "target": "__aeabi_d2lz",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_dadd",
+    "target": "__aeabi_dadd",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_dmul",
+    "target": "__aeabi_dmul",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_i2d",
+    "target": "__aeabi_i2d",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_idiv",
+    "target": "__aeabi_idiv",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_idivmod",
+    "target": "__aeabi_idivmod",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_ldivmod",
+    "target": "__aeabi_ldivmod",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_uidiv",
+    "target": "__aeabi_uidiv",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_uidivmod",
+    "target": "__aeabi_uidivmod",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_ul2d",
+    "target": "__aeabi_ul2d",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_uldivmod",
+    "target": "__aeabi_uldivmod",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_unwind_cpp_pr0",
+    "target": "__aeabi_unwind_cpp_pr0",
+    "status": "SDK"
+  },
+  {
+    "import": "__aeabi_unwind_cpp_pr1",
+    "target": "__aeabi_unwind_cpp_pr1",
+    "status": "SDK"
+  },
+  {
+    "import": "__android_log_print",
+    "target": "sf_android_log_print",
+    "status": "bridge"
+  },
+  {
+    "import": "__android_log_write",
+    "target": "sf_android_log_write",
+    "status": "bridge"
+  },
+  {
+    "import": "__cxa_guard_acquire",
+    "target": "__cxa_guard_acquire",
+    "status": "SDK"
+  },
+  {
+    "import": "__cxa_guard_release",
+    "target": "__cxa_guard_release",
+    "status": "SDK"
+  },
+  {
+    "import": "__cxa_pure_virtual",
+    "target": "__cxa_pure_virtual",
+    "status": "SDK"
+  },
+  {
+    "import": "__dso_handle",
+    "target": "sf_dso_handle",
+    "status": "bridge"
+  },
+  {
+    "import": "__errno",
+    "target": "__errno",
+    "status": "SDK"
+  },
+  {
+    "import": "__sF",
+    "target": "sf_stdio",
+    "status": "bridge"
+  },
+  {
+    "import": "__srget",
+    "target": "sf_getc",
+    "status": "bridge"
+  },
+  {
+    "import": "__stack_chk_fail",
+    "target": "sf_stack_fail",
+    "status": "bridge"
+  },
+  {
+    "import": "__stack_chk_guard",
+    "target": "sf_stack_guard",
+    "status": "bridge"
+  },
+  {
+    "import": "_ctype_",
+    "target": "sf_ctype",
+    "status": "bridge"
+  },
+  {
+    "import": "_tolower_tab_",
+    "target": "sf_lower",
+    "status": "bridge"
+  },
+  {
+    "import": "_toupper_tab_",
+    "target": "sf_upper",
+    "status": "bridge"
+  },
+  {
+    "import": "abort",
+    "target": "sf_abort",
+    "status": "bridge"
+  },
+  {
+    "import": "accept",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "acos",
+    "target": "acos",
+    "status": "SDK"
+  },
+  {
+    "import": "acosf",
+    "target": "acosf",
+    "status": "SDK"
+  },
+  {
+    "import": "asinf",
+    "target": "asinf",
+    "status": "SDK"
+  },
+  {
+    "import": "atan",
+    "target": "atan",
+    "status": "SDK"
+  },
+  {
+    "import": "atan2",
+    "target": "atan2",
+    "status": "SDK"
+  },
+  {
+    "import": "atan2f",
+    "target": "atan2f",
+    "status": "SDK"
+  },
+  {
+    "import": "atanf",
+    "target": "atanf",
+    "status": "SDK"
+  },
+  {
+    "import": "atoi",
+    "target": "atoi",
+    "status": "SDK"
+  },
+  {
+    "import": "bind",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "calloc",
+    "target": "calloc",
+    "status": "SDK"
+  },
+  {
+    "import": "ceil",
+    "target": "ceil",
+    "status": "SDK"
+  },
+  {
+    "import": "ceilf",
+    "target": "ceilf",
+    "status": "SDK"
+  },
+  {
+    "import": "chdir",
+    "target": "sf_chdir",
+    "status": "bridge"
+  },
+  {
+    "import": "clock",
+    "target": "clock",
+    "status": "SDK"
+  },
+  {
+    "import": "close",
+    "target": "sf_close",
+    "status": "bridge"
+  },
+  {
+    "import": "connect",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "cos",
+    "target": "cos",
+    "status": "SDK"
+  },
+  {
+    "import": "cosf",
+    "target": "cosf",
+    "status": "SDK"
+  },
+  {
+    "import": "cosh",
+    "target": "cosh",
+    "status": "SDK"
+  },
+  {
+    "import": "difftime",
+    "target": "difftime",
+    "status": "SDK"
+  },
+  {
+    "import": "exit",
+    "target": "sf_exit",
+    "status": "bridge"
+  },
+  {
+    "import": "expf",
+    "target": "expf",
+    "status": "SDK"
+  },
+  {
+    "import": "fclose",
+    "target": "sf_fclose",
+    "status": "bridge"
+  },
+  {
+    "import": "fcntl",
+    "target": "sf_fcntl",
+    "status": "bridge"
+  },
+  {
+    "import": "fflush",
+    "target": "sf_fflush",
+    "status": "bridge"
+  },
+  {
+    "import": "fgetpos",
+    "target": "sf_fgetpos",
+    "status": "bridge"
+  },
+  {
+    "import": "fgets",
+    "target": "sf_fgets",
+    "status": "bridge"
+  },
+  {
+    "import": "floor",
+    "target": "floor",
+    "status": "SDK"
+  },
+  {
+    "import": "floorf",
+    "target": "floorf",
+    "status": "SDK"
+  },
+  {
+    "import": "fmodf",
+    "target": "fmodf",
+    "status": "SDK"
+  },
+  {
+    "import": "fopen",
+    "target": "sf_fopen",
+    "status": "bridge"
+  },
+  {
+    "import": "fprintf",
+    "target": "sf_fprintf",
+    "status": "bridge"
+  },
+  {
+    "import": "fputc",
+    "target": "sf_putc",
+    "status": "bridge"
+  },
+  {
+    "import": "fputs",
+    "target": "sf_fputs",
+    "status": "bridge"
+  },
+  {
+    "import": "fread",
+    "target": "sf_fread",
+    "status": "bridge"
+  },
+  {
+    "import": "free",
+    "target": "free",
+    "status": "SDK"
+  },
+  {
+    "import": "freeaddrinfo",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "freopen",
+    "target": "sf_freopen",
+    "status": "bridge"
+  },
+  {
+    "import": "frexpf",
+    "target": "frexpf",
+    "status": "SDK"
+  },
+  {
+    "import": "fscanf",
+    "target": "sf_fscanf",
+    "status": "bridge"
+  },
+  {
+    "import": "fseek",
+    "target": "sf_fseek",
+    "status": "bridge"
+  },
+  {
+    "import": "fsetpos",
+    "target": "sf_fsetpos",
+    "status": "bridge"
+  },
+  {
+    "import": "fstat",
+    "target": "sf_fstat",
+    "status": "bridge"
+  },
+  {
+    "import": "ftell",
+    "target": "sf_ftell",
+    "status": "bridge"
+  },
+  {
+    "import": "fwrite",
+    "target": "sf_fwrite",
+    "status": "bridge"
+  },
+  {
+    "import": "getaddrinfo",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "getc",
+    "target": "sf_getc",
+    "status": "bridge"
+  },
+  {
+    "import": "getenv",
+    "target": "sf_getenv",
+    "status": "bridge"
+  },
+  {
+    "import": "gethostbyname",
+    "target": "sf_gethostbyname",
+    "status": "bridge"
+  },
+  {
+    "import": "gethostname",
+    "target": "sf_gethostname",
+    "status": "bridge"
+  },
+  {
+    "import": "getsockname",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "getsockopt",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "gettimeofday",
+    "target": "gettimeofday",
+    "status": "SDK"
+  },
+  {
+    "import": "glActiveTexture",
+    "target": "glActiveTexture",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glActiveTexture"
+  },
+  {
+    "import": "glAlphaFunc",
+    "target": "glAlphaFunc",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glAttachShader",
+    "target": "glAttachShader",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glBindAttribLocation",
+    "target": "glBindAttribLocation",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glBindBuffer",
+    "target": "glBindBuffer",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glBindBuffer"
+  },
+  {
+    "import": "glBindFramebuffer",
+    "target": "sf_glBindFramebuffer",
+    "status": "bridge",
+    "trace_target": "sf_trace_glBindFramebuffer"
+  },
+  {
+    "import": "glBindFramebufferOES",
+    "target": "sf_glBindFramebuffer",
+    "status": "bridge",
+    "trace_target": "sf_trace_glBindFramebuffer"
+  },
+  {
+    "import": "glBindRenderbuffer",
+    "target": "glBindRenderbuffer",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glBindRenderbufferOES",
+    "target": "glBindRenderbuffer",
+    "status": "vitaGL alias"
+  },
+  {
+    "import": "glBindTexture",
+    "target": "glBindTexture",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glBindTexture"
+  },
+  {
+    "import": "glBlendColor",
+    "target": "sf_glBlendColor",
+    "status": "bridge"
+  },
+  {
+    "import": "glBlendEquation",
+    "target": "glBlendEquation",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glBlendEquationOES",
+    "target": "glBlendEquation",
+    "status": "vitaGL alias"
+  },
+  {
+    "import": "glBlendFunc",
+    "target": "sf_glBlendFunc",
+    "status": "bridge"
+  },
+  {
+    "import": "glBufferData",
+    "target": "glBufferData",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glBufferSubData",
+    "target": "glBufferSubData",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glCheckFramebufferStatus",
+    "target": "glCheckFramebufferStatus",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glCheckFramebufferStatusOES",
+    "target": "glCheckFramebufferStatus",
+    "status": "vitaGL alias"
+  },
+  {
+    "import": "glClear",
+    "target": "glClear",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glClear"
+  },
+  {
+    "import": "glClearColor",
+    "target": "glClearColor",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glClearColor"
+  },
+  {
+    "import": "glClearDepthf",
+    "target": "glClearDepthf",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glClearStencil",
+    "target": "glClearStencil",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glClientActiveTexture",
+    "target": "glClientActiveTexture",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glClipPlanef",
+    "target": "glClipPlanef",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glColor4f",
+    "target": "glColor4f",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glColor4ub",
+    "target": "glColor4ub",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glColorMask",
+    "target": "glColorMask",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glColorMask"
+  },
+  {
+    "import": "glColorPointer",
+    "target": "glColorPointer",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glCompileShader",
+    "target": "sf_glCompileShader",
+    "status": "bridge"
+  },
+  {
+    "import": "glCompressedTexImage2D",
+    "target": "glCompressedTexImage2D",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glCompressedTexImage2D"
+  },
+  {
+    "import": "glCompressedTexImage3DOES",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "glCompressedTexSubImage2D",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "glCompressedTexSubImage3DOES",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "glCopyTexImage2D",
+    "target": "glCopyTexImage2D",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glCopyTexSubImage2D",
+    "target": "glCopyTexSubImage2D",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glCreateProgram",
+    "target": "glCreateProgram",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glCreateShader",
+    "target": "glCreateShader",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glCullFace",
+    "target": "glCullFace",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glCullFace"
+  },
+  {
+    "import": "glDeleteBuffers",
+    "target": "glDeleteBuffers",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glDeleteFramebuffers",
+    "target": "glDeleteFramebuffers",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glDeleteFramebuffersOES",
+    "target": "glDeleteFramebuffers",
+    "status": "vitaGL alias"
+  },
+  {
+    "import": "glDeleteProgram",
+    "target": "glDeleteProgram",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glDeleteRenderbuffers",
+    "target": "glDeleteRenderbuffers",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glDeleteRenderbuffersOES",
+    "target": "glDeleteRenderbuffers",
+    "status": "vitaGL alias"
+  },
+  {
+    "import": "glDeleteShader",
+    "target": "glDeleteShader",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glDeleteTextures",
+    "target": "glDeleteTextures",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glDepthFunc",
+    "target": "glDepthFunc",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glDepthMask",
+    "target": "glDepthMask",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glDepthRangef",
+    "target": "glDepthRangef",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glDisable",
+    "target": "glDisable",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glDisable"
+  },
+  {
+    "import": "glDisableClientState",
+    "target": "glDisableClientState",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glDisableVertexAttribArray",
+    "target": "glDisableVertexAttribArray",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glDisableVertexAttribArray"
+  },
+  {
+    "import": "glDrawArrays",
+    "target": "glDrawArrays",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glDrawArrays"
+  },
+  {
+    "import": "glDrawElements",
+    "target": "glDrawElements",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glDrawElements"
+  },
+  {
+    "import": "glEnable",
+    "target": "glEnable",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glEnable"
+  },
+  {
+    "import": "glEnableClientState",
+    "target": "glEnableClientState",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glEnableVertexAttribArray",
+    "target": "glEnableVertexAttribArray",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glEnableVertexAttribArray"
+  },
+  {
+    "import": "glFlush",
+    "target": "glFlush",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glFogf",
+    "target": "glFogf",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glFogfv",
+    "target": "glFogfv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glFramebufferRenderbuffer",
+    "target": "glFramebufferRenderbuffer",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glFramebufferRenderbufferOES",
+    "target": "glFramebufferRenderbuffer",
+    "status": "vitaGL alias"
+  },
+  {
+    "import": "glFramebufferTexture2D",
+    "target": "glFramebufferTexture2D",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glFramebufferTexture2DOES",
+    "target": "glFramebufferTexture2D",
+    "status": "vitaGL alias"
+  },
+  {
+    "import": "glFrontFace",
+    "target": "glFrontFace",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glFrontFace"
+  },
+  {
+    "import": "glGenBuffers",
+    "target": "glGenBuffers",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glGenFramebuffers",
+    "target": "glGenFramebuffers",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glGenFramebuffersOES",
+    "target": "glGenFramebuffers",
+    "status": "vitaGL alias"
+  },
+  {
+    "import": "glGenRenderbuffers",
+    "target": "glGenRenderbuffers",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glGenRenderbuffersOES",
+    "target": "glGenRenderbuffers",
+    "status": "vitaGL alias"
+  },
+  {
+    "import": "glGenTextures",
+    "target": "glGenTextures",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glGenerateMipmap",
+    "target": "glGenerateMipmap",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glGenerateMipmapOES",
+    "target": "glGenerateMipmap",
+    "status": "vitaGL alias"
+  },
+  {
+    "import": "glGetActiveAttrib",
+    "target": "glGetActiveAttrib",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glGetActiveUniform",
+    "target": "glGetActiveUniform",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glGetAttribLocation",
+    "target": "glGetAttribLocation",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glGetAttribLocation"
+  },
+  {
+    "import": "glGetError",
+    "target": "glGetError",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glGetError"
+  },
+  {
+    "import": "glGetFloatv",
+    "target": "sf_glGetFloatv",
+    "status": "bridge"
+  },
+  {
+    "import": "glGetIntegerv",
+    "target": "sf_glGetIntegerv",
+    "status": "bridge"
+  },
+  {
+    "import": "glGetProgramInfoLog",
+    "target": "glGetProgramInfoLog",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glGetProgramiv",
+    "target": "glGetProgramiv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glGetShaderInfoLog",
+    "target": "glGetShaderInfoLog",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glGetShaderiv",
+    "target": "glGetShaderiv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glGetString",
+    "target": "glGetString",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glGetUniformLocation",
+    "target": "glGetUniformLocation",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glGetUniformLocation"
+  },
+  {
+    "import": "glHint",
+    "target": "glHint",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glLightModelf",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "glLightModelfv",
+    "target": "glLightModelfv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glLightf",
+    "target": "sf_glLightf",
+    "status": "bridge"
+  },
+  {
+    "import": "glLightfv",
+    "target": "glLightfv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glLineWidth",
+    "target": "glLineWidth",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glLinkProgram",
+    "target": "sf_glLinkProgram",
+    "status": "bridge"
+  },
+  {
+    "import": "glLoadIdentity",
+    "target": "glLoadIdentity",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glLoadMatrixf",
+    "target": "glLoadMatrixf",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glMapBufferOES",
+    "target": "glMapBuffer",
+    "status": "vitaGL alias"
+  },
+  {
+    "import": "glMaterialf",
+    "target": "sf_glMaterialf",
+    "status": "bridge"
+  },
+  {
+    "import": "glMaterialfv",
+    "target": "glMaterialfv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glMatrixMode",
+    "target": "glMatrixMode",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glMultMatrixf",
+    "target": "glMultMatrixf",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glMultiTexCoord4f",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "glNormal3f",
+    "target": "glNormal3f",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glNormalPointer",
+    "target": "glNormalPointer",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glPixelStorei",
+    "target": "glPixelStorei",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glPixelStorei"
+  },
+  {
+    "import": "glPointParameterf",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "glPointParameterfv",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "glPointSize",
+    "target": "glPointSize",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glPolygonOffset",
+    "target": "glPolygonOffset",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glPopMatrix",
+    "target": "glPopMatrix",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glPushMatrix",
+    "target": "glPushMatrix",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glReadPixels",
+    "target": "glReadPixels",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glRenderbufferStorage",
+    "target": "glRenderbufferStorage",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glRenderbufferStorageOES",
+    "target": "glRenderbufferStorage",
+    "status": "vitaGL alias"
+  },
+  {
+    "import": "glSampleCoverage",
+    "target": "sf_glSampleCoverage",
+    "status": "bridge"
+  },
+  {
+    "import": "glScissor",
+    "target": "sf_glScissor",
+    "status": "bridge",
+    "trace_target": "sf_trace_glScissor"
+  },
+  {
+    "import": "glShadeModel",
+    "target": "glShadeModel",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glShaderSource",
+    "target": "glShaderSource",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glStencilMask",
+    "target": "glStencilMask",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glTexCoordPointer",
+    "target": "glTexCoordPointer",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glTexEnvf",
+    "target": "glTexEnvf",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glTexEnvfv",
+    "target": "glTexEnvfv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glTexEnvi",
+    "target": "glTexEnvi",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glTexImage2D",
+    "target": "glTexImage2D",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glTexImage2D"
+  },
+  {
+    "import": "glTexImage3DOES",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "glTexParameterf",
+    "target": "glTexParameterf",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glTexParameteri",
+    "target": "glTexParameteri",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glTexSubImage2D",
+    "target": "glTexSubImage2D",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glTexSubImage3DOES",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "glUniform1f",
+    "target": "glUniform1f",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glUniform1fv",
+    "target": "glUniform1fv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glUniform1i",
+    "target": "glUniform1i",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glUniform1i"
+  },
+  {
+    "import": "glUniform1iv",
+    "target": "glUniform1iv",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glUniform1iv"
+  },
+  {
+    "import": "glUniform2fv",
+    "target": "glUniform2fv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glUniform2iv",
+    "target": "glUniform2iv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glUniform3fv",
+    "target": "glUniform3fv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glUniform3iv",
+    "target": "glUniform3iv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glUniform4fv",
+    "target": "glUniform4fv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glUniform4iv",
+    "target": "glUniform4iv",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glUniformMatrix4fv",
+    "target": "glUniformMatrix4fv",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glUniformMatrix4fv"
+  },
+  {
+    "import": "glUnmapBufferOES",
+    "target": "glUnmapBuffer",
+    "status": "vitaGL alias"
+  },
+  {
+    "import": "glUseProgram",
+    "target": "glUseProgram",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glUseProgram"
+  },
+  {
+    "import": "glVertexAttrib4f",
+    "target": "glVertexAttrib4f",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glVertexAttribPointer",
+    "target": "glVertexAttribPointer",
+    "status": "vitaGL",
+    "trace_target": "sf_trace_glVertexAttribPointer"
+  },
+  {
+    "import": "glVertexPointer",
+    "target": "glVertexPointer",
+    "status": "vitaGL"
+  },
+  {
+    "import": "glViewport",
+    "target": "sf_glViewport",
+    "status": "bridge",
+    "trace_target": "sf_trace_glViewport"
+  },
+  {
+    "import": "gmtime",
+    "target": "gmtime",
+    "status": "SDK"
+  },
+  {
+    "import": "inet_addr",
+    "target": "inet_addr",
+    "status": "SDK"
+  },
+  {
+    "import": "inet_ntoa",
+    "target": "inet_ntoa",
+    "status": "SDK"
+  },
+  {
+    "import": "ioctl",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "iswalpha",
+    "target": "iswalpha",
+    "status": "SDK"
+  },
+  {
+    "import": "iswcntrl",
+    "target": "iswcntrl",
+    "status": "SDK"
+  },
+  {
+    "import": "iswdigit",
+    "target": "iswdigit",
+    "status": "SDK"
+  },
+  {
+    "import": "iswlower",
+    "target": "iswlower",
+    "status": "SDK"
+  },
+  {
+    "import": "iswprint",
+    "target": "iswprint",
+    "status": "SDK"
+  },
+  {
+    "import": "iswpunct",
+    "target": "iswpunct",
+    "status": "SDK"
+  },
+  {
+    "import": "iswspace",
+    "target": "iswspace",
+    "status": "SDK"
+  },
+  {
+    "import": "iswupper",
+    "target": "iswupper",
+    "status": "SDK"
+  },
+  {
+    "import": "iswxdigit",
+    "target": "iswxdigit",
+    "status": "SDK"
+  },
+  {
+    "import": "ldexpf",
+    "target": "ldexpf",
+    "status": "SDK"
+  },
+  {
+    "import": "listen",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "localtime",
+    "target": "localtime",
+    "status": "SDK"
+  },
+  {
+    "import": "localtime_r",
+    "target": "localtime_r",
+    "status": "SDK"
+  },
+  {
+    "import": "log10",
+    "target": "log10",
+    "status": "SDK"
+  },
+  {
+    "import": "logf",
+    "target": "logf",
+    "status": "SDK"
+  },
+  {
+    "import": "longjmp",
+    "target": "longjmp",
+    "status": "SDK"
+  },
+  {
+    "import": "lrand48",
+    "target": "lrand48",
+    "status": "SDK"
+  },
+  {
+    "import": "lseek",
+    "target": "lseek",
+    "status": "SDK"
+  },
+  {
+    "import": "malloc",
+    "target": "malloc",
+    "status": "SDK"
+  },
+  {
+    "import": "memchr",
+    "target": "memchr",
+    "status": "SDK"
+  },
+  {
+    "import": "memcmp",
+    "target": "memcmp",
+    "status": "SDK"
+  },
+  {
+    "import": "memcpy",
+    "target": "memcpy",
+    "status": "SDK"
+  },
+  {
+    "import": "memmove",
+    "target": "memmove",
+    "status": "SDK"
+  },
+  {
+    "import": "memset",
+    "target": "memset",
+    "status": "SDK"
+  },
+  {
+    "import": "mktime",
+    "target": "mktime",
+    "status": "SDK"
+  },
+  {
+    "import": "mmap",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "modff",
+    "target": "modff",
+    "status": "SDK"
+  },
+  {
+    "import": "munmap",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "nanosleep",
+    "target": "nanosleep",
+    "status": "SDK"
+  },
+  {
+    "import": "open",
+    "target": "sf_open",
+    "status": "bridge"
+  },
+  {
+    "import": "pow",
+    "target": "pow",
+    "status": "SDK"
+  },
+  {
+    "import": "powf",
+    "target": "powf",
+    "status": "SDK"
+  },
+  {
+    "import": "printf",
+    "target": "sf_printf",
+    "status": "bridge"
+  },
+  {
+    "import": "pthread_create",
+    "target": "sf_pthread_create",
+    "status": "bridge"
+  },
+  {
+    "import": "pthread_exit",
+    "target": "pthread_exit",
+    "status": "SDK"
+  },
+  {
+    "import": "pthread_getspecific",
+    "target": "pthread_getspecific",
+    "status": "SDK"
+  },
+  {
+    "import": "pthread_join",
+    "target": "pthread_join",
+    "status": "SDK"
+  },
+  {
+    "import": "pthread_key_create",
+    "target": "pthread_key_create",
+    "status": "SDK"
+  },
+  {
+    "import": "pthread_kill",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "pthread_mutex_destroy",
+    "target": "sf_mutex_destroy",
+    "status": "bridge"
+  },
+  {
+    "import": "pthread_mutex_init",
+    "target": "sf_mutex_init",
+    "status": "bridge"
+  },
+  {
+    "import": "pthread_mutex_lock",
+    "target": "sf_mutex_lock",
+    "status": "bridge"
+  },
+  {
+    "import": "pthread_mutex_trylock",
+    "target": "sf_mutex_trylock",
+    "status": "bridge"
+  },
+  {
+    "import": "pthread_mutex_unlock",
+    "target": "sf_mutex_unlock",
+    "status": "bridge"
+  },
+  {
+    "import": "pthread_self",
+    "target": "pthread_self",
+    "status": "SDK"
+  },
+  {
+    "import": "pthread_setspecific",
+    "target": "pthread_setspecific",
+    "status": "SDK"
+  },
+  {
+    "import": "putc",
+    "target": "sf_putc",
+    "status": "bridge"
+  },
+  {
+    "import": "putchar",
+    "target": "putchar",
+    "status": "SDK"
+  },
+  {
+    "import": "puts",
+    "target": "sf_puts",
+    "status": "bridge"
+  },
+  {
+    "import": "qsort",
+    "target": "qsort",
+    "status": "SDK"
+  },
+  {
+    "import": "read",
+    "target": "read",
+    "status": "SDK"
+  },
+  {
+    "import": "realloc",
+    "target": "realloc",
+    "status": "SDK"
+  },
+  {
+    "import": "recv",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "recvfrom",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "remove",
+    "target": "sf_remove",
+    "status": "bridge"
+  },
+  {
+    "import": "rename",
+    "target": "sf_rename",
+    "status": "bridge"
+  },
+  {
+    "import": "select",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "send",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "sendto",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "setjmp",
+    "target": "setjmp",
+    "status": "SDK"
+  },
+  {
+    "import": "setlocale",
+    "target": "setlocale",
+    "status": "SDK"
+  },
+  {
+    "import": "setsockopt",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "setvbuf",
+    "target": "sf_setvbuf",
+    "status": "bridge"
+  },
+  {
+    "import": "sigaction",
+    "target": "sf_sigaction",
+    "status": "bridge"
+  },
+  {
+    "import": "sin",
+    "target": "sin",
+    "status": "SDK"
+  },
+  {
+    "import": "sinf",
+    "target": "sinf",
+    "status": "SDK"
+  },
+  {
+    "import": "sinh",
+    "target": "sinh",
+    "status": "SDK"
+  },
+  {
+    "import": "snprintf",
+    "target": "snprintf",
+    "status": "SDK"
+  },
+  {
+    "import": "socket",
+    "target": "sf_socket",
+    "status": "bridge"
+  },
+  {
+    "import": "sprintf",
+    "target": "sprintf",
+    "status": "SDK"
+  },
+  {
+    "import": "sqrt",
+    "target": "sqrt",
+    "status": "SDK"
+  },
+  {
+    "import": "sqrtf",
+    "target": "sqrtf",
+    "status": "SDK"
+  },
+  {
+    "import": "srand48",
+    "target": "srand48",
+    "status": "SDK"
+  },
+  {
+    "import": "sscanf",
+    "target": "sscanf",
+    "status": "SDK"
+  },
+  {
+    "import": "strcasecmp",
+    "target": "strcasecmp",
+    "status": "SDK"
+  },
+  {
+    "import": "strcat",
+    "target": "strcat",
+    "status": "SDK"
+  },
+  {
+    "import": "strchr",
+    "target": "strchr",
+    "status": "SDK"
+  },
+  {
+    "import": "strcmp",
+    "target": "strcmp",
+    "status": "SDK"
+  },
+  {
+    "import": "strcoll",
+    "target": "strcoll",
+    "status": "SDK"
+  },
+  {
+    "import": "strcpy",
+    "target": "strcpy",
+    "status": "SDK"
+  },
+  {
+    "import": "strcspn",
+    "target": "strcspn",
+    "status": "SDK"
+  },
+  {
+    "import": "strerror",
+    "target": "strerror",
+    "status": "SDK"
+  },
+  {
+    "import": "strftime",
+    "target": "strftime",
+    "status": "SDK"
+  },
+  {
+    "import": "strlcpy",
+    "target": "strlcpy",
+    "status": "SDK"
+  },
+  {
+    "import": "strlen",
+    "target": "strlen",
+    "status": "SDK"
+  },
+  {
+    "import": "strncasecmp",
+    "target": "strncasecmp",
+    "status": "SDK"
+  },
+  {
+    "import": "strncat",
+    "target": "strncat",
+    "status": "SDK"
+  },
+  {
+    "import": "strncmp",
+    "target": "strncmp",
+    "status": "SDK"
+  },
+  {
+    "import": "strncpy",
+    "target": "strncpy",
+    "status": "SDK"
+  },
+  {
+    "import": "strpbrk",
+    "target": "strpbrk",
+    "status": "SDK"
+  },
+  {
+    "import": "strrchr",
+    "target": "strrchr",
+    "status": "SDK"
+  },
+  {
+    "import": "strstr",
+    "target": "strstr",
+    "status": "SDK"
+  },
+  {
+    "import": "strtod",
+    "target": "strtod",
+    "status": "SDK"
+  },
+  {
+    "import": "strtok",
+    "target": "strtok",
+    "status": "SDK"
+  },
+  {
+    "import": "strtol",
+    "target": "strtol",
+    "status": "SDK"
+  },
+  {
+    "import": "strtoul",
+    "target": "strtoul",
+    "status": "SDK"
+  },
+  {
+    "import": "swprintf",
+    "target": "swprintf",
+    "status": "SDK"
+  },
+  {
+    "import": "sysconf",
+    "target": "sf_sysconf",
+    "status": "bridge"
+  },
+  {
+    "import": "system",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "tan",
+    "target": "tan",
+    "status": "SDK"
+  },
+  {
+    "import": "tanf",
+    "target": "tanf",
+    "status": "SDK"
+  },
+  {
+    "import": "tanh",
+    "target": "tanh",
+    "status": "SDK"
+  },
+  {
+    "import": "time",
+    "target": "time",
+    "status": "SDK"
+  },
+  {
+    "import": "tmpfile",
+    "target": "sf_tmpfile",
+    "status": "bridge"
+  },
+  {
+    "import": "tmpnam",
+    "target": null,
+    "status": "diagnostic trap"
+  },
+  {
+    "import": "towlower",
+    "target": "towlower",
+    "status": "SDK"
+  },
+  {
+    "import": "towupper",
+    "target": "towupper",
+    "status": "SDK"
+  },
+  {
+    "import": "ungetc",
+    "target": "sf_ungetc",
+    "status": "bridge"
+  },
+  {
+    "import": "unlink",
+    "target": "sf_remove",
+    "status": "bridge"
+  },
+  {
+    "import": "usleep",
+    "target": "usleep",
+    "status": "SDK"
+  },
+  {
+    "import": "vsnprintf",
+    "target": "vsnprintf",
+    "status": "SDK"
+  },
+  {
+    "import": "vsprintf",
+    "target": "vsprintf",
+    "status": "SDK"
+  },
+  {
+    "import": "wcscmp",
+    "target": "wcscmp",
+    "status": "SDK"
+  },
+  {
+    "import": "wcscpy",
+    "target": "wcscpy",
+    "status": "SDK"
+  },
+  {
+    "import": "wcslen",
+    "target": "wcslen",
+    "status": "SDK"
+  },
+  {
+    "import": "wcsncpy",
+    "target": "wcsncpy",
+    "status": "SDK"
+  },
+  {
+    "import": "write",
+    "target": "write",
+    "status": "SDK"
+  }
+]

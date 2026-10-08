@@ -1,0 +1,116 @@
+version: 2
+firmware: 3.60
+modules:
+  SceSblPostSsMgr:
+    nid: 0xB6C941F2
+    libraries:
+      SceSblFwLoaderForDriver:
+        kernel: true
+        nid: 0x6FE424E4
+        functions:
+          ksceSblFwLoaderLoad: 0x91C73A54
+          ksceSblFwLoaderLock: 0xA6278D27
+          ksceSblFwLoaderUnlock: 0xBB59FC7A
+      SceSblLicMgr:
+        kernel: false
+        nid: 0x62083C72
+        functions:
+          sceSblLicMgrActivateDevkit: 0xEB21DD39
+          sceSblLicMgrActivateFromFs: 0x6E56EA0A
+          sceSblLicMgrClearActivationData: 0x9B749D1D
+          sceSblLicMgrGetActivationKey: 0x2A437187
+          sceSblLicMgrGetExpireDate: 0xE9FA0FE5
+          sceSblLicMgrGetIssueNo: 0x0E0691A1
+          sceSblLicMgrGetLicenseStatus: 0x0EA6A30C
+          sceSblLicMgrGetUsageTimeLimit: 0x774EBBA2
+      SceSblPmMgr:
+        kernel: false
+        nid: 0xA9CE5795
+        functions:
+          sceSblPmMgrAuthEtoI: 0xBD38B141
+          sceSblPmMgrGetCurrentMode: 0xDA4EDEBF
+          sceSblPmMgrGetProductModeForUser: 0x46EA9FDB
+          sceSblPmMgrGetProductModeFromNVS: 0x49CE0DDF
+          sceSblPmMgrSetProductModeOffForUser: 0x41FE8A37
+      SceSblPostSsMgrForDriver:
+        kernel: true
+        nid: 0x2254E1B2
+        functions:
+          _ksceSblPostSsMgrExecutePmSmF00dCommand: 0xFE92A318
+          ksceSblCoredumpGetAesKey: 0xCB5436BD
+          ksceSblCoredumpGetHmacKey: 0x2C463AF1
+          ksceSblCoredumpKeyStoreFinalize: 0x4100B9E9
+          ksceSblCoredumpKeyStoreInitialize: 0xC977601E
+          ksceSblLicMgrActivateDevkit: 0x0298382B
+          ksceSblLicMgrGetActivationKey: 0xF7F1015B
+          ksceSblLicMgrGetExpireDate: 0x4FF2682F
+          ksceSblLicMgrGetLicenseStatus: 0x15F37282
+          ksceSblPmMgrAuthEtoI: 0x19B63D65
+          ksceSblPmMgrGetProductModeFromNVS: 0x4663C195
+          ksceSblPmMgrSetProductMode: 0xADF92824
+          ksceSblPmMgrSetSdModeOff: 0xFE92A318
+          ksceSblPostSsMgrActivate: 0x0298382B
+          ksceSblPostSsMgrDebugDecryptKeystone: 0xCC5AA5A5
+          ksceSblPostSsMgrDebugEncryptKeystone: 0x42474C8B
+          ksceSblPostSsMgrDecryptSealedkey: 0x33275F95
+          ksceSblPostSsMgrEncryptSealedkey: 0x08525D8D
+          ksceSblPostSsMgrExecutePmSmF00dCommand: 0xADF92824
+          ksceSblPostSsMgrExecutePmSmF00dCommand8: 0x4663C195
+          ksceSblPostSsMgrExecutePmSmSdF00dCommand: 0x19B63D65
+          ksceSblPostSsMgrGenerateAppKey: 0x2646DE64
+          ksceSblPostSsMgrGetExpireDate: 0x4FF2682F
+          ksceSblPostSsMgrInitializeSpfsoCtx: 0xBDF18922
+          ksceSblPostSsMgrReleaseSpfsoCtx: 0xAD3B0078
+          ksceSblPostSsMgrSetCpRtc: 0x3F9BDEDF
+          ksceSblPostSsMgrVerifyKeystone: 0xDDA6FA6D
+          ksceSblPostSsMgrVerifyKeystoneWithPasscode: 0xF86F1452
+          ksceSblPostSsMgrVerifySpfsoCtx: 0x686B9461
+          ksceSblRSA2048CreateSignature: 0x07BAD056
+          ksceSblRSA2048VerifySignature: 0x3DB69911
+          ksceSblRtcMgrGetCpRtcLogical: 0xDE5150FE
+          ksceSblRtcMgrGetCpRtcPhysical: 0x942010A0
+          ksceSblRtcMgrSetCpRtcLogical: 0xDC68EE5C
+          ksceSblRtcMgrSetCpRtcPhysical: 0x3F9BDEDF
+          ksceSblSpsfoMgrClose: 0xAD3B0078
+          ksceSblSpsfoMgrOpen: 0xBDF18922
+          ksceSblSpsfoMgrVerify: 0x686B9461
+          ksceSblSsMgrCloudDataGetEncDecCryptHandle: 0xC6684F7E
+          ksceSblSsMgrCloudDataGetSignCryptHandle: 0x739C981E
+          ksceSblSsMgrCloudDataStop: 0x2BF04B8E
+          ksceSblUtMgrExecuteUtokenSmCommand1: 0xC2E58CE3
+          ksceSblUtMgrGetSelfAuthInfo: 0xABDD68CD
+          ksceSblUtMgrGetTrilithiumBuffer: 0xABDD68CD
+          ksceSblUtMgrHasComTestFlag: 0x7ACCAA50
+          ksceSblUtMgrHasFlag1: 0x22599675
+          ksceSblUtMgrHasFlag6: 0x9D1D8EE5
+          ksceSblUtMgrHasFlag7: 0xC93C0A0D
+          ksceSblUtMgrHasFlag8: 0x9B49C249
+          ksceSblUtMgrHasFlag9: 0x1923D80D
+          ksceSblUtMgrHasNpTestFlag: 0x9FD835B0
+          ksceSblUtMgrHasStoreFlag: 0x9D2E2D39
+          ksceSblUtMgrIsAllowComTest: 0x128FB35A
+          ksceSblUtMgrIsAllowProgramDebug: 0xD8A2D465
+          ksceSblUtMgrResetUtokenFile: 0x1FF699DD
+          ksceSblUtMgrVerifyAndStoreUtoken: 0xC2E58CE3
+      SceSblRtcMgr:
+        kernel: false
+        nid: 0x44C5F209
+        functions:
+          sceSblRtcMgrGetCpRtcLogical: 0xDD44D726
+          sceSblRtcMgrGetCpRtcPhysicalForUser: 0x1614302B
+          sceSblRtcMgrGetCpSerialId: 0xE162A827
+          sceSblRtcMgrSetCpActivationKey: 0x298AE544
+          sceSblRtcMgrSetCpRtcLogical: 0x9DFB118B
+          sceSblRtcMgrSetCpRtcPhysicalAndKey: 0x3C0EEC69
+          sceSblRtcMgrSetCpRtcPhysicalForUser: 0xA990BC44
+      SceSblUtMgr:
+        kernel: false
+        nid: 0x000DF81A
+        functions:
+          sceSblUtMgrGetCurrentSecureTick: 0xCFCB1355
+          sceSblUtMgrGetRemainingValidityTime: 0xCFCB1355
+          sceSblUtMgrGetUtName: 0x04CA1311
+          sceSblUtMgrIsTrilithiumFlagEnabled: 0x04CA1311
+          sceSblUtMgrReadUtoken: 0xD2836E0D
+          sceSblUtMgrResetUtokenFile: 0x1CD57182
+          sceSblUtMgrUpdateUtoken: 0xBDE74645

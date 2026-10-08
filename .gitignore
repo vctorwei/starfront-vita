@@ -1,25 +1,25 @@
-# Distribution repository: keep uploads to reviewed documentation and media.
-/*
-!/.gitignore
-!/README.md
-!/README.zh-CN.md
-!/LICENSE.md
-!/THIRD_PARTY.md
-!/licenses/
-/licenses/*
-!/licenses/*.txt
-!/media/
-/media/*
-!/media/cover.png
-!/media/demo.mp4
-!/media/demo.gif
-
-# Binary releases are uploaded separately as VPK assets, never committed here.
+# Local builds and user-supplied commercial files are never published.
+/build*/
+/work/
+/reports/
+/.tools/
+/.venv/
+/node_modules/
 *.apk
 *.obb
 *.so
-*.zip
 *.vpk
 *.psp2dmp
 *.log
+*.gla
+*.bar
+*.save
+*.o
+*.obj
+*.a
+*.elf
+*.velf
+*.bin
+*.pyc
+**/__pycache__/
 **/.DS_Store

@@ -1,6 +1,8 @@
-# Third-party components and reference acknowledgements
+# Third-party notices
 
-The project credits below distinguish code used in the loader, dependencies, and projects consulted as references. Original game files are not relicensed by this project.
+Original project contributions use MIT. The combined loader binary is distributed
+under GPLv3 because it includes GPL libraries. Component licenses and notices
+remain intact; they do not grant rights to the original game or system software.
 
 ## Reference projects
 
@@ -11,41 +13,66 @@ The project credits below distinguish code used in the loader, dependencies, and
 | [Modern Combat 2: Black Pegasus Vita](https://github.com/WolffsRoom/MC2BPegasus-Vita) | WolffsRoom and upstream contributors | [`253676d4`](https://github.com/WolffsRoom/MC2BPegasus-Vita/commit/253676d4e0a3c33cfab133a06c3c1e6ad552a26f) | Gameloft JNI initialization and graphics compatibility |
 | [GTA: San Andreas Vita](https://github.com/TheOfficialFloW/gtasa_vita) | Andy Nguyen / TheFloW and contributors | [`96941714`](https://github.com/TheOfficialFloW/gtasa_vita/commit/96941714673c56b689d51ce6f79df68bbd0bebd5) | ELF-loader foundation, ABI and relocation reference |
 
+Additional reference: [Gun Bros PSVita](https://github.com/Rocroverss/Gun-Bros-Psvita) by Rocroverss and contributors, revision `dab9e6a22b77c352bb74baf12787501c53d4e1c7`, reviewed for Vita system LiveArea templates and VPK packaging. No Gun Bros assets or code are included.
+
 Their MIT notices are reproduced in `licenses/`. Reference acknowledgement does not imply that each project's code, configuration tools or artwork is bundled with Starfront.
 
-## MC3's full acknowledgement list
+## Contributors acknowledged by MC3
 
-As credited by [the MC3 project](https://github.com/v-atamanenko/mc3-vita#credits):
+Andy “TheFloW” Nguyen (SO loader), Rinnegatamante (rendering, audio/video and
+trophies), CatoTheYounger (QA), Once13One (LiveArea art), and GrapheneCt
+(CapUnlocker), as credited by [MC3](https://github.com/v-atamanenko/mc3-vita#credits).
+These credits acknowledge their prior work, not participation in Starfront testing.
 
-- **Andy “TheFloW” Nguyen** — foundational shared-library loading work.
-- **Rinnegatamante** — MC3 rendering and audiovisual assistance, video playback and trophies.
-- **CatoTheYounger** — MC3 testing / QA.
-- **Once13One** — MC3 LiveArea art.
-- **GrapheneCt** — CapUnlocker.
+## Included code and libraries
 
-These are acknowledgements of work on MC3 and its dependencies, not assertions that those contributors tested or implemented this Starfront port. Starfront's cover uses its own game's assets, not Once13One's MC3 artwork.
+Full dependency revisions and source URLs are in [deps/sources.json](deps/sources.json).
+The sources in this release, including local changes, are the sources used to
+build its VPK. Upstream license texts accompany each component.
 
-## Loader and runtime components
+| Component | License / notices | Source in this repository and changes |
+| --- | --- | --- |
+| TheFloW Android SO loader | MIT, Andy Nguyen | `vendor/so-loader`; bounds/read checks, import diagnostics, relocation addends and state cleanup |
+| ELF interface header | LGPL-2.1-or-later, Free Software Foundation | `vendor/so-loader/elf.h`; existing glibc header notice retained |
+| VitaSDK debug screen / PSPSDK font | Upstream notices; BSD font notice in `licenses/PSPSDK-BSD.txt` | `vendor/debugscreen`; framebuffer resubmission for error display; upstream VitaSDK samples common files |
+| vitaGL | LGPL-3.0; `COPYING` and `COPYING.LESSER` | `deps/vitaGL`; local postponed shader compilation failure guard, already applied and also supplied as a patch |
+| vitaShaRK | LGPL-3.0 | `deps/vitaShaRK`; unchanged source |
+| SceShaccCgExt v1.0.1 | GPL-3.0 | `deps/SceShaccCgExt`; optional `sce_intrinsics.h` text and its loading call removed on 2026-10-08; pragma/extension hooks retained |
+| pthread-embedded | LGPL-2.0-or-later (upstream ships LGPL-2.1 text); Vita backend MIT, Davee | `deps/pthread-embedded`; unchanged source; standalone CMake target uses the upstream Vita source list |
+| math-neon | MIT, Lachlan Tychsen-Smith | `deps/math-neon`; this fork's source files carry MIT notices |
+| zlib 1.2.12 | zlib, Jean-loup Gailly and Mark Adler | `deps/zlib`; unchanged source |
+| PolarSSL 1.3.9 | GPL-2.0-or-later, Brainspark B.V. | `deps/polarssl`; unchanged source; only AES/Base64 and their platform support modules linked |
+| VitaSDK headers | MIT, VitaSDK contributors | `deps/vita-headers`; unchanged interface headers |
+| Apache Harmony / AOSP | Apache-2.0 | `src/drm_preferences.c` SHA1PRNG compatibility arithmetic and `tests/reference/drm-gingerbread`; original notices retained |
 
-- **Android SO loader:** [TheFloW's GTA SA loader](https://github.com/TheOfficialFloW/gtasa_vita/tree/96941714673c56b689d51ce6f79df68bbd0bebd5/loader), MIT, copyright Andy Nguyen. Local changes cover bounds/read checks, unresolved-import diagnostics, relocation addends and loader state cleanup.
-- **Debug screen:** [VitaSDK samples/common](https://github.com/vitasdk/samples/tree/fe8fbef570f3280586c0c20157146e3faefb2181/common). Local initialization change permits re-submitting a framebuffer for error display. The embedded font carries PSPSDK BSD notices, including Marcus R. Brown, James Forshaw and John Kelley.
-- **vitaGL:** [Rinnegatamante/vitaGL](https://github.com/Rinnegatamante/vitaGL/tree/dca4b9d143290d78ec043131a19be36c78cdc7b5), revision `dca4b9d143290d78ec043131a19be36c78cdc7b5`, GNU LGPL v3. Built with softfp and GLSL support. A local change preserves shader-compiler failures instead of continuing a postponed link with a null program.
-- **vitaShaRK:** [Rinnegatamante/vitaShaRK](https://github.com/Rinnegatamante/vitaShaRK/tree/df24065e65098b2d1ac533760109ad4367573f28), revision `df24065e65098b2d1ac533760109ad4367573f28`, GNU LGPL v3. GLSL translation / compiler integration.
-- **SceShaccCgExt, pthreads, math-neon and zlib:** runtime dependencies supplied by the [VitaSDK softfp package collection](https://github.com/Rinnegatamante/vitasdk-packages-softfp). Their respective upstream terms apply.
-- **PolarSSL 1.3.9:** AES/Base64 support for Android preference compatibility. Copyright Brainspark B.V.; the installed library headers carry GPL v2-or-later terms. GNU license texts and the component notice accompany this release.
-- **kubridge:** [bythos14/kubridge](https://github.com/bythos14/kubridge), an external kernel-plugin requirement. The plugin itself is not packaged in the VPK.
-- **VitaSDK / VitaSDK softfp:** compiler, platform headers, system-library stubs and runtime support. The development toolchain was the `softfp-osx-v2.228` distribution.
-- **AOSP / Apache Harmony:** Android ABI and Gingerbread preference behavior were used as references. Apache Harmony SHA1PRNG reference files were used for local test vectors; those Java files are not part of the VPK executable.
+Local build integration is in `CMakeLists.txt`, `deps/CMakeLists.txt` and
+`deps/pthread-sources.cmake`. The vitaGL guard and SceShaccCgExt omission are
+local changes, not upstream releases. The omitted header carried a Sony
+confidential/all-rights-reserved notice; it is neither published nor embedded
+in this release. No replacement proprietary declaration text is supplied.
 
-The third-party GNU licenses retain their source-availability and redistribution conditions. This page documents provenance; it does not replace those terms or claim that the combined binary is MIT-only.
+The C/C++ compiler, libc/libm, compiler runtime and standard C++ runtime, platform
+stubs, and taiHEN/kubridge interfaces come from the softfp VitaSDK toolchain;
+see [BUILD.md](docs/BUILD.md). GCC runtime components carry their runtime
+exceptions; Newlib and toolchain components retain their respective upstream
+notices. External kernel modules, Sony firmware and `libshacccg.suprx` are not
+included. Runtime dependency sources above are rebuilt locally, not taken from
+prebuilt SDK runtime archives.
 
-## Game support resources
+## Artwork and game files
 
-- **README cover:** the original high-resolution `splash_highres.pvr` / `splash_highres.bsprite` artwork in `sprites_1024.gla`, exported losslessly at its 960 × 640 sprite dimensions. The surrounding texture padding is excluded; the artwork is not redrawn or AI-generated.
-- **Hardware demo:** a PSV recording supplied by the project maintainer, published as MP4 with a silent GIF preview.
-- **Gameloft:** original game and artwork. The VPK contains resized original artwork for the Vita shell and the small `igli.bin` / `serialkey.txt` support resources used by the compatibility layer. The original APK, OBB, game library and full game data are not distributed here.
-- **Terrain shader adaptations:** the VPK's `compat/GloftSFHP/TerrainShaders/` contains two derived variants of shaders from the tested game's `effects.gla`. They remove the vertex-color attribute/varying and final color modulation for the corresponding material pass. They are adaptations, not recovered originals, and are not covered by the reference projects' MIT licenses.
+- The shell PNGs/SVGs are original geometric SF artwork, under the project's MIT license.
+- The README embeds an externally hosted Starfront promotional screenshot from
+  [Gameloft's public post](https://x.com/gameloft/status/964888517984837637).
+  Copyright remains with Gameloft. No permission to redistribute or relicense
+  that screenshot is claimed. It is not a build input or a file in the VPK.
+- The MP4/GIF is a maintainer-supplied recording of the earlier 00.06 build on a
+  physical Vita. Depicted game content retains its owner's rights.
+- APK/OBB, `libstarfront.so`, `igli.bin`, `serialkey.txt`, game archives, saves and
+  derived game shaders are not distributed. `scripts/prepare_game.py` extracts
+  resources and adapts two shaders locally from the user's verified 1.0.0 files.
+  File names, sizes and hashes are used to identify the supported version.
 
-## Development and testing tools
-
-Thanks to [VitaShell](https://github.com/TheOfficialFloW/VitaShell), [Vita3K](https://github.com/Vita3K/Vita3K), [PSPSDK](https://github.com/pspdev/pspsdk), AOSP, Python/Pillow, CMake, and the compiler/library contributors. Emulator-specific diagnostic changes and tools are not included in this PSV hardware release.
+Thanks also to VitaShell, Vita3K, kubridge, PSPSDK and the wider Vita homebrew
+community. These acknowledgements and notices are not a statement of legal
+approval from Gameloft, Sony or the reference-project authors.

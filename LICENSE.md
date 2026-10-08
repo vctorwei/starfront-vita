@@ -1,21 +1,25 @@
-MIT License
+# License scope
 
-Copyright (c) 2026 vctorwei
+Original loader code, scripts, documentation and geometric shell artwork by
+vctorwei are available under the [MIT License](licenses/Project-MIT.txt), except
+files or portions with an existing third-party notice. The Android/Harmony
+compatibility portion of `src/drm_preferences.c` is Apache-2.0.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+The distributed loader executable links GPL and LGPL components and is offered
+as a combined work under **GNU GPL version 3**, with no warranty. See [COPYING](COPYING).
+This does not change the separate licenses of its MIT, BSD, Apache-2.0, zlib
+and LGPL components. All upstream notices remain applicable.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Loader and included library sources, local modifications and build scripts are
+provided in this repository and the source archive accompanying each release.
+[Build instructions](docs/BUILD.md) explain how to modify and relink the loader
+with replacement library versions. No additional restriction on modification or
+reverse engineering to debug library modifications is imposed.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+The user-supplied game and Sony system software are separate requirements,
+not licensed or supplied by this project. No Gameloft code, data or artwork is
+licensed under MIT or GPL by this repository. The maintainer's gameplay recording
+and externally linked promotional screenshot illustrate the game; neither is a
+redistribution license for the depicted game or its artwork.
+
+See [THIRD_PARTY.md](THIRD_PARTY.md) for source provenance and component terms.

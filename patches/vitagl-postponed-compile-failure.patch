@@ -1,0 +1,13 @@
+--- a/source/custom_shaders.c
++++ b/source/custom_shaders.c
+@@ -2432,6 +2432,10 @@
+ 				vgl_compile_shader(p->fshader, GL_TRUE);
+ 			}
+ 		}
++		if (!p->vshader->prog || !p->fshader->prog) {
++			glsl_sema_mode = VGL_MODE_POSTPONED;
++			return;
++		}
+ 
+ 		// Setting progressive default attribute bindings
+ 		set_default_attrib_binding();

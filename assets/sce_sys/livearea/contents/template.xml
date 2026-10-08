@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<livearea style="psmobile" format-ver="01.00" content-rev="3">
+  <livearea-background><image>cover-bg06.png</image></livearea-background>
+  <gate><startup-image>cover-gate06.png</startup-image></gate>
+</livearea>

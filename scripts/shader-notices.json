@@ -1,0 +1,4 @@
+{
+  "UnlitMultiTextureNoVertexColorVS": "/* PSV compatibility adaptation derived from the supplied game's\n * UnlitMultiTextureVertexColorVS.glsl. This is not recovered original source.\n * The no-vertex-color pass keeps the original position, matrix and UV work;\n * only the Color0 attribute and its varying are removed.\n */\n",
+  "UnlitMultiTextureBlendNoVertexColorFS": "/* PSV compatibility adaptation derived from the supplied game's\n * UnlitMultiTextureBlendVertexColorFS.glsl. This is not recovered original\n * source. The four-sampler alpha blend is unchanged; its result is emitted\n * without vertex-color modulation, equivalent to the supplied formula with\n * vertex color (1, 1, 1, 1).\n */\n"
+}

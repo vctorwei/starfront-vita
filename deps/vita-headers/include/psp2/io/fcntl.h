@@ -1,0 +1,318 @@
+/**
+ * \usergroup{SceFcntl}
+ * \usage{psp2/io/fcntl.h,SceIofilemgr_stub}
+ */
+
+
+#ifndef _PSP2_IO_FCNTL_H_
+#define _PSP2_IO_FCNTL_H_
+
+#include <vitasdk/build_utils.h>
+#include <psp2/types.h>
+#include <psp2common/kernel/iofilemgr.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+/**
+ * Open or create a file for reading or writing
+ *
+ * @par Example1: Open a file for reading
+ * @code
+ * if((fd = sceIoOpen("device:/path/to/file", SCE_O_RDONLY, 0777) < 0) {
+ * // error code in fd, for example no open filehandle left (0x80010018)
+ * }
+ * @endcode
+ * @par Example2: Open a file for writing, creating it if it doesn't exist
+ * @code
+ * if((fd = sceIoOpen("device:/path/to/file", SCE_O_WRONLY|SCE_O_CREAT, 0777) < 0) {
+ * // error code in fd, for example no open filehandle left (0x80010018)
+ * }
+ * @endcode
+ *
+ * @param file - Pointer to a string holding the name of the file to open.
+ * @param flags - Libc styled flags that are or'ed together (One or more ::SceIoMode).
+ * @param mode - One or more ::SceIoAccessMode flags or'ed together. Can also use Unix absolute permissions.
+ * @return > 0 is a valid file handle, < 0 on error.
+ */
+SceUID sceIoOpen(const char *file, int flags, SceMode mode);
+
+/**
+ * Delete a descriptor
+ *
+ * @code
+ * sceIoClose(fd);
+ * @endcode
+ *
+ * @param fd - File descriptor to close
+ * @return < 0 on error
+ */
+int sceIoClose(SceUID fd);
+
+/**
+ * Read input
+ *
+ * @par Example:
+ * @code
+ * bytes_read = sceIoRead(fd, data, 100);
+ * @endcode
+ *
+ * @param fd    - Opened file descriptor to read from
+ * @param buf   - Pointer to the buffer where the read data will be placed
+ * @param nbyte - Size of the read in bytes
+ *
+ * @return The number of bytes read
+ */
+SceSSize sceIoRead(SceUID fd, void *buf, SceSize nbyte);
+
+/**
+ * Read input at offset
+ *
+ * @par Example:
+ * @code
+ * bytes_read = sceIoPread(fd, data, 100, 0x1000);
+ * @endcode
+ *
+ * @param fd - Opened file descriptor to read from
+ * @param data - Pointer to the buffer where the read data will be placed
+ * @param size - Size of the read in bytes
+ * @param offset - Offset to read
+ *
+ * @return < 0 on error.
+ */
+int sceIoPread(SceUID fd, void *data, SceSize size, SceOff offset);
+
+/**
+ * Write output
+ *
+ * @par Example:
+ * @code
+ * bytes_written = sceIoWrite(fd, data, 100);
+ * @endcode
+ *
+ * @param fd    - Opened file descriptor to write to
+ * @param buf   - Pointer to the data to write
+ * @param nbyte - Size of data to write
+ *
+ * @return The number of bytes written
+ */
+SceSSize sceIoWrite(SceUID fd, const void *buf, SceSize nbyte);
+
+/**
+ * Write output at offset
+ *
+ * @par Example:
+ * @code
+ * bytes_written = sceIoPwrite(fd, data, 100, 0x1000);
+ * @endcode
+ *
+ * @param fd - Opened file descriptor to write to
+ * @param data - Pointer to the data to write
+ * @param size - Size of data to write
+ * @param offset - Offset to write
+ *
+ * @return The number of bytes written
+ */
+int sceIoPwrite(SceUID fd, const void *data, SceSize size, SceOff offset);
+
+/**
+ * Reposition read/write file descriptor offset
+ *
+ * @par Example:
+ * @code
+ * pos = sceIoLseek(fd, -10, SCE_SEEK_END);
+ * @endcode
+ *
+ * @param fd - Opened file descriptor with which to seek
+ * @param offset - Relative offset from the start position given by whence
+ * @param whence - One of ::SceIoSeekMode.
+ *
+ * @return The position in the file after the seek.
+ */
+SceOff sceIoLseek(SceUID fd, SceOff offset, int whence);
+
+/**
+ * Reposition read/write file descriptor offset (32bit mode)
+ *
+ * @par Example:
+ * @code
+ * pos = sceIoLseek32(fd, -10, SCE_SEEK_END);
+ * @endcode
+ *
+ * @param fd - Opened file descriptor with which to seek
+ * @param offset - Relative offset from the start position given by whence
+ * @param whence - One of ::SceIoSeekMode.
+ *
+ * @return The position in the file after the seek.
+ */
+long sceIoLseek32(SceUID fd, long offset, int whence);
+
+/**
+ * Remove directory entry
+ *
+ * @param file - Path to the file to remove
+ * @return < 0 on error
+ */
+int sceIoRemove(const char *file);
+
+/**
+ * Change the name of a file
+ *
+ * @param oldname - The old filename
+ * @param newname - The new filename
+ * @return < 0 on error.
+ */
+int sceIoRename(const char *oldname, const char *newname);
+
+/**
+  * Synchronize the file data on the device.
+  *
+  * @param device - The device to synchronize (e.g. msfat0:)
+  * @param flags - Mount synchronization flags. FW 3.60 forwards this value
+  *                when synchronizing the buffer cache for the entire mount.
+  */
+int sceIoSync(const char *device, unsigned int flags);
+
+/**
+ * Synchronize the file data for one file
+ *
+ * @param fd   - Opened file descriptor to sync
+ * @param flag - unknown
+ *
+ * @return < 0 on error.
+ */
+int sceIoSyncByFd(SceUID fd, int flag);
+
+/**
+  * Cancel an asynchronous operation on a file descriptor.
+  *
+  * @param fd - The file descriptor to perform cancel on.
+  *
+  * @return < 0 on error.
+  */
+int sceIoCancel(SceUID fd);
+
+int sceIoGetPriority(SceUID fd);
+int sceIoGetProcessDefaultPriority(void);
+int sceIoGetThreadDefaultPriority(void);
+int sceIoSetPriority(SceUID fd, int priority);
+int sceIoSetProcessDefaultPriority(int priority);
+int sceIoSetThreadDefaultPriority(int priority);
+
+typedef struct SceIoDevctlOpt {
+	SceSize arglen; //!< Size of the device-driver-specific parameter block in bytes.
+	void *bufp; //!< Output buffer.
+	SceSize buflen; //!< Output buffer size.
+	SceUInt32 reserved[3]; //!< Ignored on FW 3.60.
+} SceIoDevctlOpt;
+VITASDK_BUILD_ASSERT_EQ(0x18, SceIoDevctlOpt); // size is from FW 3.60
+
+typedef struct sceIoChstatOpt {
+	SceUInt32 reserved[2]; //!< Ignored on FW 3.60.
+} sceIoChstatOpt;
+VITASDK_BUILD_ASSERT_EQ(0x8, sceIoChstatOpt); // size is from FW 3.60
+
+typedef struct sceIoDopenOpt {
+	SceUInt32 reserved[2]; //!< Ignored on FW 3.60.
+} sceIoDopenOpt;
+VITASDK_BUILD_ASSERT_EQ(0x8, sceIoDopenOpt); // size is from FW 3.60
+
+typedef struct sceIoGetstatOpt {
+	SceUInt32 reserved[2]; //!< Ignored on FW 3.60.
+} sceIoGetstatOpt;
+VITASDK_BUILD_ASSERT_EQ(0x8, sceIoGetstatOpt); // size is from FW 3.60
+
+typedef struct sceIoMkdirOpt {
+	SceUInt32 reserved[2]; //!< Ignored on FW 3.60.
+} sceIoMkdirOpt;
+VITASDK_BUILD_ASSERT_EQ(0x8, sceIoMkdirOpt); // size is from FW 3.60
+
+typedef struct sceIoOpenOpt {
+	SceUInt32 reserved[2]; //!< Ignored on FW 3.60.
+} sceIoOpenOpt;
+VITASDK_BUILD_ASSERT_EQ(0x8, sceIoOpenOpt); // size is from FW 3.60
+
+typedef struct sceIoRemoveOpt {
+	SceUInt32 reserved[2]; //!< Ignored on FW 3.60.
+} sceIoRemoveOpt;
+VITASDK_BUILD_ASSERT_EQ(0x8, sceIoRemoveOpt); // size is from FW 3.60
+
+typedef struct sceIoRenameOpt {
+	SceUInt32 reserved[4]; //!< Ignored on FW 3.60.
+} sceIoRenameOpt;
+VITASDK_BUILD_ASSERT_EQ(0x10, sceIoRenameOpt); // size is from FW 3.60
+
+typedef struct sceIoRmdirOpt {
+	SceUInt32 reserved[2]; //!< Ignored on FW 3.60.
+} sceIoRmdirOpt;
+VITASDK_BUILD_ASSERT_EQ(0x8, sceIoRmdirOpt); // size is from FW 3.60
+
+typedef struct sceIoSyncOpt {
+	SceUInt32 reserved[2]; //!< Ignored on FW 3.60.
+} sceIoSyncOpt;
+VITASDK_BUILD_ASSERT_EQ(0x8, sceIoSyncOpt); // size is from FW 3.60
+
+/**
+ * User export used by ::sceIoChstat.
+ *
+ * @param[in] name - Path to modify.
+ * @param[in] stat - Replacement values selected by \a cbit.
+ * @param[in] cbit - Bitwise OR of `SCE_CST_*` values.
+ * @param[in] opt - Required 8-byte option block. Its contents are ignored on FW 3.60.
+ *
+ * @return 0 on success, or a negative error code.
+ */
+int _sceIoChstat(const char *name, const SceIoStat *stat, unsigned int cbit, const sceIoChstatOpt *opt);
+
+/** User export used by ::sceIoChstatByFd. */
+int _sceIoChstatByFd(SceUID fd, const SceIoStat *buf, unsigned int cbit);
+
+/**
+ * User export used by ::sceIoDevctl.
+ *
+ * @param[in] devname - Device name.
+ * @param[in] cmd - Device-specific command.
+ * @param[in] arg - Input buffer containing \a opt->arglen bytes, or NULL.
+ * @param[in] opt - Required block describing the input and output buffers.
+ *
+ * @return The device-driver result, or a negative error code.
+ */
+int _sceIoDevctl(const char *devname, int cmd, const void *arg, const SceIoDevctlOpt *opt);
+
+/** User export used by ::sceIoDopen. The option block is required; its contents are ignored on FW 3.60. */
+SceUID _sceIoDopen(const char *dirname, const sceIoDopenOpt *opt);
+
+/** User export used by ::sceIoDread. The structure at \a dir is copied to and from user memory. */
+int _sceIoDread(SceUID fd, SceIoDirent *dir);
+
+/** User export used by ::sceIoGetstat. The option block is required; its contents are ignored on FW 3.60. */
+int _sceIoGetstat(const char *name, SceIoStat *buf, const sceIoGetstatOpt *opt);
+
+/** User export used by ::sceIoGetstatByFd. */
+int _sceIoGetstatByFd(SceUID fd, SceIoStat *stat);
+
+/** User export used by ::sceIoMkdir. The option block is required; its contents are ignored on FW 3.60. */
+int _sceIoMkdir(const char *dirname, SceMode mode, const sceIoMkdirOpt *opt);
+
+/** User export used by ::sceIoOpen. The option block is required; its contents are ignored on FW 3.60. */
+SceUID _sceIoOpen(const char *filename, int flags, SceMode mode, const sceIoOpenOpt *opt);
+
+/** User export used by ::sceIoRemove. The option block is required; its contents are ignored on FW 3.60. */
+int _sceIoRemove(const char *filename, const sceIoRemoveOpt *opt);
+
+/** User export used by ::sceIoRename. The option block is required; its contents are ignored on FW 3.60. */
+int _sceIoRename(const char *oldname, const char *newname, const sceIoRenameOpt *opt);
+
+/** User export used by ::sceIoRmdir. The option block is required; its contents are ignored on FW 3.60. */
+int _sceIoRmdir(const char *dirname, const sceIoRmdirOpt *opt);
+
+/** User export used by ::sceIoSync. The option block is required; its contents are ignored on FW 3.60. */
+int _sceIoSync(const char *device, unsigned int flags, const sceIoSyncOpt *opt);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* _PSP2_IO_FCNTL_H_ */

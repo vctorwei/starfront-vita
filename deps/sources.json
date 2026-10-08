@@ -1,0 +1,60 @@
+[
+  {
+    "name": "vitaGL",
+    "upstream": "https://github.com/Rinnegatamante/vitaGL",
+    "revision": "dca4b9d143290d78ec043131a19be36c78cdc7b5",
+    "license": "LGPL-3.0",
+    "changes": "postponed shader failure guard applied"
+  },
+  {
+    "name": "vitaShaRK",
+    "upstream": "https://github.com/Rinnegatamante/vitaShaRK",
+    "revision": "df24065e65098b2d1ac533760109ad4367573f28",
+    "license": "LGPL-3.0",
+    "changes": "none"
+  },
+  {
+    "name": "vita-headers",
+    "upstream": "https://github.com/vitasdk/vita-headers",
+    "revision": "e66ebe90b73d1fa4cce005a5b2072cec27322544",
+    "license": "MIT",
+    "changes": "none; samples and CI omitted"
+  },
+  {
+    "name": "SceShaccCgExt",
+    "upstream": "https://github.com/bythos14/SceShaccCgExt",
+    "revision": "102192366c25fe7b8fec073d665494b6172605c3",
+    "license": "GPL-3.0",
+    "changes": "remove optional proprietary intrinsic declaration header and its loading call"
+  },
+  {
+    "name": "math-neon",
+    "upstream": "https://github.com/Rinnegatamante/math-neon",
+    "revision": "0faab814782c071ff4015527f1ca955ab1ccc470",
+    "license": "MIT",
+    "changes": "none"
+  },
+  {
+    "name": "pthread-embedded",
+    "upstream": "https://github.com/vitasdk/pthread-embedded",
+    "revision": "63e1cd9152082d9ccb1b38d67a4caf975562fbeb",
+    "license": "LGPL-2.0-or-later; MIT Vita platform code",
+    "changes": "none"
+  },
+  {
+    "name": "zlib",
+    "upstream": "https://github.com/madler/zlib",
+    "revision": "v1.2.12",
+    "license": "Zlib",
+    "changes": "none"
+  },
+  {
+    "name": "polarssl",
+    "version": "1.3.9",
+    "upstream": "https://github.com/Mbed-TLS/mbedtls",
+    "archive": "https://src.fedoraproject.org/repo/pkgs/polarssl/polarssl-1.3.9-gpl.tgz/48af7d1f0d5de512cbd6dacf5407884c/polarssl-1.3.9-gpl.tgz",
+    "sha256": "d3605afc28ed4b7d1d9e3142d72e42855e4a23c07c951bbb0299556b02d36755",
+    "license": "GPL-2.0-or-later",
+    "changes": "none; only AES/Base64 platform support modules linked"
+  }
+]
